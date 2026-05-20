@@ -395,7 +395,7 @@ h6 {
 
 h1,
 .ttl-h1 {
-    font-size: 32px; // Mobile First Default
+    font-size: 30px; // Mobile First Default
     line-height: 1.1;
     letter-spacing: -0.025em;
     font-weight: 700;
@@ -583,6 +583,53 @@ h6,
 
 
 // ==========================================================================
+// Landing Animations
 // ==========================================================================
-// Raw Mobile-First Responsive Styles (0px Default in main SCSS above)
-// ==========================================================================
+
+@keyframes headerSlideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes heroFadeUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.header {
+    animation: headerSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.carousel-item.active {
+    .hero-title {
+        animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 0.1s;
+        opacity: 0;
+    }
+
+    .hero-text {
+        animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 0.3s;
+        opacity: 0;
+    }
+
+    .hero-actions {
+        animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 0.5s;
+        opacity: 0;
+    }
+}

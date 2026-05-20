@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize World-Class Facilities Swiper Carousel (Always active - Desktop & Mobile)
     if (document.querySelector('.facilities-swiper')) {
         new Swiper('.facilities-swiper', {
-            slidesPerView: 1.2,
+            slidesPerView: 1,
             spaceBetween: 10,
             grabCursor: true,
             loop: false,
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Our Specialties Swiper Carousel (Common for Desktop and Mobile)
     if (document.querySelector('.specialties-swiper')) {
         const specialtiesSwiper = new Swiper('.specialties-swiper', {
-            slidesPerView: 1.2,
+            slidesPerView: 1,
             spaceBetween: 16,
             grabCursor: true,
             loop: false,
@@ -628,6 +628,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     ScrollTrigger.refresh();
                 }
             }, 300);
+        });
+    }
+    // Initialize AOS Animation Library
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
         });
     }
 });

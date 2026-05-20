@@ -131,7 +131,8 @@
         }
       ]
     }
-    </script>
+    </script> <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -188,7 +189,8 @@
             <!-- Carousel Slides -->
             <div class="carousel-inner">
                 <!-- Slide 1: World-Class Healthcare -->
-                <div class="carousel-item active" style="background-image: url('assets/images/hero_lobby.png');">
+                <div class="carousel-item active"
+                    style="background-image: url('assets/images/banner/hospital-medical-surgery-team-is-ready-for-the-ope-2026-03-24-07-42-35-utc.jpg.jpeg');">
                     <div class="hero-overlay"></div>
                     <div class="container h-100 position-relative">
                         <div class="carousel-caption hero-caption">
@@ -201,7 +203,8 @@
                 </div>
 
                 <!-- Slide 2: Surgical Excellence -->
-                <div class="carousel-item" style="background-image: url('assets/images/hero_surgery.png');">
+                <div class="carousel-item"
+                    style="background-image: url('assets/images/banner/surgical-team-in-operating-room-looks-down-2026-03-10-02-12-44-utc.jpg.jpeg');">
                     <div class="hero-overlay"></div>
                     <div class="container h-100 position-relative">
                         <div class="carousel-caption hero-caption">
@@ -214,7 +217,8 @@
                 </div>
 
                 <!-- Slide 3: 24/7 Trauma Care -->
-                <div class="carousel-item" style="background-image: url('assets/images/hero_emergency.png');">
+                <div class="carousel-item"
+                    style="background-image: url('assets/images/banner/doctors-preparing-for-surgery-in-bright-operating-2026-03-25-23-38-10-utc.JPG.jpeg');">
                     <div class="hero-overlay"></div>
                     <div class="container h-100 position-relative">
                         <div class="carousel-caption hero-caption">
@@ -242,7 +246,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="about-section" id="about">
+    <section class="about-section" id="about" data-aos="fade-up">
         <div class="container">
             <!-- Label and Title Left-Aligned -->
             <div class="row mb-4">
@@ -258,9 +262,9 @@
             <!-- Cinematic Center Image -->
             <div class="row mb-4">
                 <div class="col-12">
-                    <div class="about-image-container-wide position-relative overflow-hidden shadow-lg">
-                        <img src="assets/images/Hospital-Image/image-bg.png" alt="BMH Perumbavoor Hospital Building"
-                            class="w-100 object-fit-cover" style="max-height: 500px; min-height: 300px;">
+                    <div class="about-image-container-wide position-relative overflow-hidden">
+                        <img src="assets/images/4.jpeg" alt="BMH Perumbavoor Hospital Building"
+                            class="w-100 object-fit-cover" style="max-height: 600px; min-height: 300px;">
                         <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"></div>
                     </div>
                 </div>
@@ -269,23 +273,19 @@
             <!-- Lead Paragraph with More>> Link -->
             <div class="row mb-3">
                 <div class="col-12 text-start">
+                    <p class="mb-3 text-16 fw-medium">
+                        A new destination for advanced healthcare is coming to Central Kerala.
+                    </p>
                     <p class="mb-3 text-16">
                         Baby Memorial Hospital Perumbavoor, the upcoming multi-specialty tertiary care hospital from the
                         trusted BMH Group, is being envisioned to bring world-class clinical expertise, advanced
                         technology, and compassionate care closer to the people of Perumbavoor and the surrounding
                         regions.
                     </p>
-                    <p class="mb-3 text-16">
-                        With a planned capacity of 490 beds, including
-                        140+ ICU beds, advanced emergency facilities, dedicated day-care services, and
-                        dialysis units, BMH Perumbavoor will be equipped to manage everything from routine
-                        medical care to highly complex tertiary and critical care interventions.
-                    </p>
                     <p class="mb-0 text-16">
-                        Backed by nearly four decades of healthcare
-                        excellence from the BMH Group, the hospital is being created to redefine the patient
-                        experience through a seamless blend of medical innovation, clinical excellence, and
-                        compassionate healing.
+                        The hospital is being
+                        developed as one of the region’s most comprehensive healthcare destinations—designed to deliver
+                        integrated, patient-centred care across a wide spectrum of specialties.
                         <a href="javascript:void(0);" class="about-toggle-link text-primary text-decoration-none ms-1"
                             id="about-read-more-toggle">
                             <span class="toggle-text">More</span>
@@ -299,108 +299,85 @@
             <div class="about-collapsible-wrapper collapsed" id="about-collapsible-details">
                 <div class="about-collapsible-inner pb-4">
                     <!-- Single Column Stacked Content Layout -->
-                    <div class="row pt-3 justify-content-start text-start">
+                    <div class="row justify-content-start text-start">
                         <div class="col-12 col-lg-11">
 
-                            <!-- Part 2: Clinical Focus Areas (Tag Pills) -->
-                            <div class="mb-5 py-3">
-                                <h5 class="ttl-h5 mb-3">
+                            <p class="mb-4 text-16">
+                                With a planned capacity of 490 beds, including 140+ ICU beds, advanced emergency
+                                facilities, dedicated day-care services, and dialysis units, BMH Perumbavoor will be
+                                equipped to manage everything from routine medical care to highly complex tertiary and
+                                critical care interventions.
+                            </p>
 
-                                    Clinical Focus & Multidisciplinary Expertise
-                                </h5>
-                                <p class="text-16 mb-4">BMH Perumbavoor is envisioned to offer multidisciplinary
-                                    expertise across a wide spectrum of specialities. Main clinical areas include:</p>
-                                <div class="d-flex flex-wrap gap-2 about-specialty-pills">
-                                    <span class="specialty-pill">Cardiology</span>
-                                    <span class="specialty-pill">Oncology</span>
-                                    <span class="specialty-pill">Neurosciences</span>
-                                    <span class="specialty-pill">Nephrology</span>
-                                    <span class="specialty-pill">Orthopaedics</span>
-                                    <span class="specialty-pill">Gastroenterology</span>
-                                    <span class="specialty-pill">Women’s Health</span>
-                                    <span class="specialty-pill">Fertility Care</span>
-                                    <span class="specialty-pill">Emergency Medicine</span>
-                                    <span class="specialty-pill">Critical Care</span>
-                                    <span class="specialty-pill">IVF Lab</span>
-                                    <span class="specialty-pill">Endoscopy & ERCP</span>
-                                    <span class="specialty-pill">Neuro Lab</span>
-                                    <span class="specialty-pill">Urodynamic Lab</span>
-                                    <span class="specialty-pill">Cosmetic Laser</span>
-                                    <span class="specialty-pill">Audiometry</span>
-                                    <span class="specialty-pill">Cardiac Diagnostics</span>
-                                </div>
-                            </div>
-
-                            <!-- Part 3: State-of-the-Art Infrastructure (Grid of features) -->
-                            <div class="mb-3">
-                                <h5 class="ttl-h5 mb-2">
-
-                                    Advanced Infrastructure & Specialized Services
-                                </h5>
-                                <div class="row g-3 mt-1">
+                            <div class="mb-4">
+                                <h5 class="ttl-h5 mb-3">The hospital will feature:</h5>
+                                <div class="row g-3">
                                     <div class="col-12 col-md-6">
-                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100  ">
+                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100">
                                             <i class="fa-solid fa-circle-check text-secondary me-3 mt-1 fs-5"></i>
-                                            <div>
-                                                <h6 class="fw-bold text-slate-800 mb-1">15 Operation Theatres</h6>
-                                                <p class="text-muted small mb-0">Advanced theatres equipped for complex
-                                                    and robotic surgical interventions.</p>
-                                            </div>
+                                            <p class="fw-bold text-slate-800 mb-0">15 Advanced Operation Theatres</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100  ">
+                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100">
                                             <i class="fa-solid fa-circle-check text-secondary me-3 mt-1 fs-5"></i>
-                                            <div>
-                                                <h6 class="fw-bold text-slate-800 mb-1">Flat Panel Cath Labs</h6>
-                                                <p class="text-muted small mb-0">AI-powered flat panel labs for
-                                                    high-precision cardiac interventions.</p>
-                                            </div>
+                                            <p class="fw-bold text-slate-800 mb-0">AI-Powered Advanced Flat Panel Cath
+                                                Labs</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100  ">
+                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100">
                                             <i class="fa-solid fa-circle-check text-secondary me-3 mt-1 fs-5"></i>
-                                            <div>
-                                                <h6 class="fw-bold text-slate-800 mb-1">Oncology Infrastructure</h6>
-                                                <p class="text-muted small mb-0">Comprehensive cancer care with advanced
-                                                    LINAC & Brachytherapy.</p>
-                                            </div>
+                                            <p class="fw-bold text-slate-800 mb-0">Advanced Oncology Infrastructure with
+                                                LINAC & Brachytherapy</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100  ">
+                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100">
                                             <i class="fa-solid fa-circle-check text-secondary me-3 mt-1 fs-5"></i>
-                                            <div>
-                                                <h6 class="fw-bold text-slate-800 mb-1">Surgical Robotics</h6>
-                                                <p class="text-muted small mb-0">State-of-the-art robotic surgical
-                                                    systems for minimally invasive procedures.</p>
-                                            </div>
+                                            <p class="fw-bold text-slate-800 mb-0">Advanced Surgical Robot</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100">
+                                            <i class="fa-solid fa-circle-check text-secondary me-3 mt-1 fs-5"></i>
+                                            <p class="fw-bold text-slate-800 mb-0">Comprehensive Diagnostic Services
+                                                including Digital PET-CT, SPECT-CT, 3T MRI, 256-slice CT, Digital
+                                                Mammography, Ultrasound, and Digital X-ray</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100  ">
+                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100">
                                             <i class="fa-solid fa-circle-check text-secondary me-3 mt-1 fs-5"></i>
-                                            <div>
-                                                <h6 class="fw-bold text-slate-800 mb-1">3T MRI, PET-CT & SPECT-CT</h6>
-                                                <p class="text-muted small mb-0">High-end diagnostic imaging including
-                                                    256-slice CT and digital mammography.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <div class="d-flex align-items-start p-3 bg-light rounded-4 h-100  ">
-                                            <i class="fa-solid fa-circle-check text-secondary me-3 mt-1 fs-5"></i>
-                                            <div>
-                                                <h6 class="fw-bold text-slate-800 mb-1">Labs & Blood Bank</h6>
-                                                <p class="text-muted small mb-0">Fully integrated laboratory diagnostic
-                                                    suite and 24/7 blood bank services.</p>
-                                            </div>
+                                            <p class="fw-bold text-slate-800 mb-0">Integrated Laboratory & Blood Bank
+                                                Services</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            <p class="mb-3 text-16">
+                                BMH Perumbavoor is envisioned to offer multidisciplinary expertise across cardiology,
+                                oncology, neurosciences, nephrology, orthopaedics, gastroenterology, women’s health,
+                                fertility care, emergency medicine, and critical care.
+                            </p>
+
+                            <p class="mb-4 text-16">
+                                Specialized facilities including IVF Lab, Endoscopy & ERCP suites, Neuro Lab, Urodynamic
+                                Lab, Cosmetic Laser services, Audiometry, and advanced cardiac diagnostics will further
+                                strengthen its commitment to comprehensive healthcare under one roof.
+                            </p>
+
+                            <p class="mb-3 text-16">
+                                Backed by nearly four decades of healthcare excellence from the BMH Group, the hospital
+                                is being created to redefine the patient experience through a seamless blend of medical
+                                innovation, clinical excellence, and compassionate healing.
+                            </p>
+
+                            <p class="mb-0 text-16 fw-medium text-primary">
+                                At Baby Memorial Hospital Perumbavoor, healthcare will go beyond treatment—it will be
+                                about trust, empathy, reassurance, and the promise of a healthier tomorrow.
+                            </p>
 
                         </div>
                     </div>
@@ -425,7 +402,7 @@
                                 <span class="stat-number stat-grid-number" data-target="39">0</span>
                                 <span class="stat-grid-plus">+</span>
                             </div>
-                            <span class="stat-grid-label">years legacy</span>
+                            <span class="stat-grid-label">years of clinical excellence</span>
                         </div>
                     </div>
 
@@ -485,7 +462,8 @@
                         </div>
                         <div class="stat-grid-info">
                             <div class="stat-grid-num-wrapper">
-                                <span class="stat-number stat-grid-number" data-target="40">0</span>
+                                <span class="stat-number stat-grid-number" data-target="50">0</span>
+                                <span class="stat-grid-plus">+</span>
                             </div>
                             <span class="stat-grid-label">Specialties</span>
                         </div>
@@ -496,13 +474,13 @@
     </section>
 
     <!-- Facilities Section -->
-    <section class="facilities-section">
+    <section id="facilities" class="facilities-section" data-aos="fade-up">
         <div class="container">
             <!-- Section Header -->
             <div class="row mb-5">
                 <div class="col-12 text-start d-flex flex-column align-items-start">
                     <h2 class="ttl-h2 facilities-title">World-Class Facilities</h2>
-                    <p class="facilities-subtitle">BMH Perumbavoor is equipped with cutting-edge clinical
+                    <p class="facilities-subtitle">BMH Perumbavoor is poised to be equipped with cutting-edge clinical
                         infrastructure built to modern international standards, ensuring swift medical intervention and
                         patient comfort.</p>
                 </div>
@@ -513,9 +491,11 @@
                 <div class="swiper-wrapper">
                     <!-- Slide 1: LINAC -->
                     <div class="swiper-slide">
-                        <div class="facility-card" style="background-image: url('assets/images/Facilities/LINAC.jpg');">
+                        <div class="facility-card" style="background-image: url('assets/images/Facilities/LINAC.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">LINAC</h4>
+                                <p class="facility-card-desc">Advanced radiotherapy system for precise cancer treatment.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -526,6 +506,8 @@
                             style="background-image: url('assets/images/Facilities/Brachy Therapy.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">BRACHY</h4>
+                                <p class="facility-card-desc">Targeted radiation therapy for various localized cancers.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -536,6 +518,8 @@
                             style="background-image: url('assets/images/Facilities/PET CT.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">PET CT</h4>
+                                <p class="facility-card-desc">High-precision imaging for comprehensive cancer staging.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -546,6 +530,8 @@
                             style="background-image: url('assets/images/Facilities/SPECT CT.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">SPECT CT</h4>
+                                <p class="facility-card-desc">Advanced nuclear medicine imaging for accurate diagnosis.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -553,9 +539,11 @@
                     <!-- Slide 5: Cath Lab -->
                     <div class="swiper-slide">
                         <div class="facility-card"
-                            style="background-image: url('assets/images/Facilities/Cath Lab.jpg');">
+                            style="background-image: url('assets/images/Facilities/Cath Lab.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">Cath Lab</h4>
+                                <p class="facility-card-desc">State-of-the-art flat panel lab for cardiac interventions.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -563,9 +551,10 @@
                     <!-- Slide 6: Robotic Surgery -->
                     <div class="swiper-slide">
                         <div class="facility-card"
-                            style="background-image: url('assets/images/Facilities/Robotic Surgery.jpg');">
+                            style="background-image: url('assets/images/Facilities/Robotic Surgery.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">Robotic Surgery</h4>
+                                <p class="facility-card-desc">Minimally invasive procedures with robotic precision.</p>
                             </div>
                         </div>
                     </div>
@@ -575,6 +564,8 @@
                         <div class="facility-card" style="background-image: url('assets/images/Facilities/MRI.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">MRI Scan</h4>
+                                <p class="facility-card-desc">High-resolution 3T MRI for detailed anatomical imaging.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -585,6 +576,7 @@
                             style="background-image: url('assets/images/Facilities/Mammogram.png');">
                             <div class="facility-content">
                                 <h4 class="facility-card-title ttl-h4">Mammography</h4>
+                                <p class="facility-card-desc">Advanced digital mammography for early detection.</p>
                             </div>
                         </div>
                     </div>
@@ -607,7 +599,7 @@
     </section>
 
     <!-- Specialties Section -->
-    <section class="specialties-section" id="specialties">
+    <section class="specialties-section" id="specialties" data-aos="fade-up">
         <div class="container">
 
             <!-- Section Header -->
@@ -706,21 +698,7 @@
                             </div>
                         </div>
 
-                        <!-- Slide 7: CTA Card -->
-                        <div class="swiper-slide">
-                            <div class="bento-card bento-card-white bento-cta-card h-100">
-                                <div class="bento-card-body d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h4 class="bento-card-title ttl-h4">Need Consultation?</h4>
-                                        <p class="bento-card-text mb-4">Connect with our medical coordinators for custom
-                                            schedules and timing sheets.</p>
-                                    </div>
-                                    <a href="#contact" class="bento-cta-btn btn btn-primary w-100 rounded-pill py-2">
-                                        <i class="fa-solid fa-calendar-check me-2"></i> Book Now
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+
 
                     </div>
 
@@ -751,7 +729,7 @@
     </section>
 
     <!-- BMH Premium Hospital Gallery Section -->
-    <section id="gallery" class="gallery-section">
+    <section id="gallery" class="gallery-section" data-aos="fade-up">
         <div class="container">
 
             <!-- Section Header (Centered Layout) -->
@@ -786,14 +764,14 @@
                     <div class="swiper-slide gallery-item-col gallery-item" data-category="rooms">
                         <div class="gallery-card">
                             <div class="gallery-img-wrapper">
-                                <img src="assets/images/hero_lobby.png" alt="Premium Hospital Lobby"
+                                <img src="assets/images/gallery/empty-hospital-corridor-2026-03-18-17-36-48-utc.jpg.jpeg" alt="Premium Hospital Lobby"
                                     class="gallery-img" />
                                 <div class="gallery-overlay">
                                     <div class="gallery-info text-center p-3">
                                         <span class="gallery-item-category">Wards & Lobbies</span>
                                         <h4 class="gallery-item-title">Main Reception & Lounge</h4>
                                         <button class="gallery-zoom-btn mt-3" data-bs-toggle="modal"
-                                            data-bs-target="#lightboxModal" data-src="assets/images/hero_lobby.png"
+                                            data-bs-target="#lightboxModal" data-src="assets/images/gallery/empty-hospital-corridor-2026-03-18-17-36-48-utc.jpg.jpeg"
                                             data-title="Main Reception & Lounge">
                                             <i class="fa-solid fa-plus"></i>
                                         </button>
@@ -807,14 +785,14 @@
                     <div class="swiper-slide gallery-item-col gallery-item" data-category="infra">
                         <div class="gallery-card">
                             <div class="gallery-img-wrapper">
-                                <img src="assets/images/hero_surgery.png" alt="Modular Operation Theatre"
+                                <img src="assets/images/gallery/doctors-preparing-for-surgery-in-bright-operating-2026-03-25-23-38-10-utc.JPG.jpeg" alt="Modular Operation Theatre"
                                     class="gallery-img" />
                                 <div class="gallery-overlay">
                                     <div class="gallery-info text-center p-3">
                                         <span class="gallery-item-category">Infrastructure</span>
                                         <h4 class="gallery-item-title">Advanced Surgical Suite</h4>
                                         <button class="gallery-zoom-btn mt-3" data-bs-toggle="modal"
-                                            data-bs-target="#lightboxModal" data-src="assets/images/hero_surgery.png"
+                                            data-bs-target="#lightboxModal" data-src="assets/images/gallery/doctors-preparing-for-surgery-in-bright-operating-2026-03-25-23-38-10-utc.JPG.jpeg"
                                             data-title="Advanced Surgical Suite">
                                             <i class="fa-solid fa-plus"></i>
                                         </button>
@@ -828,15 +806,15 @@
                     <div class="swiper-slide gallery-item-col gallery-item" data-category="tech">
                         <div class="gallery-card">
                             <div class="gallery-img-wrapper">
-                                <img src="assets/images/hero_emergency.png" alt="Critical Care Unit"
+                                <img src="assets/images/gallery/emergency-patient-concept-professional-doctor-wor-2026-03-24-23-52-56-utc.jpg.jpeg" alt="Critical Care Unit"
                                     class="gallery-img" />
                                 <div class="gallery-overlay">
                                     <div class="gallery-info text-center p-3">
                                         <span class="gallery-item-category">Medical Tech</span>
-                                        <h4 class="gallery-item-title">Critical Care ICU Bed</h4>
+                                        <h4 class="gallery-item-title">Emergency Care Center</h4>
                                         <button class="gallery-zoom-btn mt-3" data-bs-toggle="modal"
-                                            data-bs-target="#lightboxModal" data-src="assets/images/hero_emergency.png"
-                                            data-title="Critical Care ICU Bed">
+                                            data-bs-target="#lightboxModal" data-src="assets/images/gallery/emergency-patient-concept-professional-doctor-wor-2026-03-24-23-52-56-utc.jpg.jpeg"
+                                            data-title="Emergency Care Center">
                                             <i class="fa-solid fa-plus"></i>
                                         </button>
                                     </div>
@@ -846,19 +824,19 @@
                     </div>
 
                     <!-- Item 4: CT Scanner (Tech) -->
-                    <div class="swiper-slide gallery-item-col gallery-item" data-category="tech">
+                    <div class="swiper-slide gallery-item-col gallery-item" data-category="rooms">
                         <div class="gallery-card">
                             <div class="gallery-img-wrapper">
-                                <img src="assets/images/facility_scanner.png" alt="Advanced Imaging Center"
+                                <img src="assets/images/gallery/asian-female-doctor-writing-on-clipboard-at-recept-2026-03-25-01-11-33-utc.jpg.jpeg" alt="Hospital Reception"
                                     class="gallery-img" />
                                 <div class="gallery-overlay">
                                     <div class="gallery-info text-center p-3">
-                                        <span class="gallery-item-category">Medical Tech</span>
-                                        <h4 class="gallery-item-title">High-Resolution CT System</h4>
+                                        <span class="gallery-item-category">Wards & Lobbies</span>
+                                        <h4 class="gallery-item-title">Outpatient Reception</h4>
                                         <button class="gallery-zoom-btn mt-3" data-bs-toggle="modal"
                                             data-bs-target="#lightboxModal"
-                                            data-src="assets/images/facility_scanner.png"
-                                            data-title="High-Resolution CT System">
+                                            data-src="assets/images/gallery/asian-female-doctor-writing-on-clipboard-at-recept-2026-03-25-01-11-33-utc.jpg.jpeg"
+                                            data-title="Outpatient Reception">
                                             <i class="fa-solid fa-plus"></i>
                                         </button>
                                     </div>
@@ -871,15 +849,15 @@
                     <div class="swiper-slide gallery-item-col gallery-item" data-category="infra">
                         <div class="gallery-card">
                             <div class="gallery-img-wrapper">
-                                <img src="assets/images/about_hospital.png" alt="BMH Hospital Exterior"
+                                <img src="assets/images/gallery/a-mature-team-of-doctors-walking-in-the-hospital-c-2026-03-10-01-02-10-utc.jpg.jpeg" alt="Expert Medical Team"
                                     class="gallery-img" />
                                 <div class="gallery-overlay">
                                     <div class="gallery-info text-center p-3">
                                         <span class="gallery-item-category">Infrastructure</span>
-                                        <h4 class="gallery-item-title">Main Campus Facade</h4>
+                                        <h4 class="gallery-item-title">Expert Medical Team</h4>
                                         <button class="gallery-zoom-btn mt-3" data-bs-toggle="modal"
-                                            data-bs-target="#lightboxModal" data-src="assets/images/about_hospital.png"
-                                            data-title="Main Campus Facade">
+                                            data-bs-target="#lightboxModal" data-src="assets/images/gallery/a-mature-team-of-doctors-walking-in-the-hospital-c-2026-03-10-01-02-10-utc.jpg.jpeg"
+                                            data-title="Expert Medical Team">
                                             <i class="fa-solid fa-plus"></i>
                                         </button>
                                     </div>
@@ -892,15 +870,15 @@
                     <div class="swiper-slide gallery-item-col gallery-item" data-category="rooms">
                         <div class="gallery-card">
                             <div class="gallery-img-wrapper">
-                                <img src="assets/images/hero_lobby.png" alt="Executive Patient Suite"
-                                    class="gallery-img" style="filter: hue-rotate(45deg);" />
+                                <img src="assets/images/gallery/young-nurse-pushing-little-girl-on-wheelchair-at-h-2026-03-25-10-27-43-utc.jpg.jpeg" alt="Patient Care"
+                                    class="gallery-img" />
                                 <div class="gallery-overlay">
                                     <div class="gallery-info text-center p-3">
                                         <span class="gallery-item-category">Wards & Lobbies</span>
-                                        <h4 class="gallery-item-title">Executive Patient Room</h4>
+                                        <h4 class="gallery-item-title">Compassionate Patient Care</h4>
                                         <button class="gallery-zoom-btn mt-3" data-bs-toggle="modal"
-                                            data-bs-target="#lightboxModal" data-src="assets/images/hero_lobby.png"
-                                            data-title="Executive Patient Room">
+                                            data-bs-target="#lightboxModal" data-src="assets/images/gallery/young-nurse-pushing-little-girl-on-wheelchair-at-h-2026-03-25-10-27-43-utc.jpg.jpeg"
+                                            data-title="Compassionate Patient Care">
                                             <i class="fa-solid fa-plus"></i>
                                         </button>
                                     </div>
@@ -936,7 +914,7 @@
     </div>
 
     <!-- BMH Hospital Events & Activities Section -->
-    <section id="events" class="events-section">
+    <section id="events" class="events-section" data-aos="fade-up">
         <div class="container">
 
             <!-- Section Header -->
@@ -1062,7 +1040,7 @@
     </section>
 
     <!-- Premium BMH Careers / Work With Us Section (Screenshot-inspired Design) -->
-    <section id="careers" class="careers-section">
+    <section id="careers" class="careers-section" data-aos="fade-up">
         <div class="container">
 
             <!-- Sleek White Card Container covering the entire section -->
@@ -1092,7 +1070,7 @@
                                 </div>
                                 <div>
                                     <span class="info-box-label text-muted d-block text-uppercase"
-                                        style="font-size: 11px; letter-spacing: 0.5px;">Why Join Us</span>
+                                        style="font-size: 11px; letter-spacing: 0.5px;">Facilities</span>
                                     <strong class="info-box-value text-slate-800" style="font-size: 15px;">Advanced
                                         Infrastructure</strong>
                                 </div>
@@ -1105,7 +1083,7 @@
                                 </div>
                                 <div>
                                     <span class="info-box-label text-muted d-block text-uppercase"
-                                        style="font-size: 11px; letter-spacing: 0.5px;">Why Join Us</span>
+                                        style="font-size: 11px; letter-spacing: 0.5px;">Development</span>
                                     <strong class="info-box-value text-slate-800" style="font-size: 15px;">Continuous
                                         Growth</strong>
                                 </div>
@@ -1118,7 +1096,7 @@
                                 </div>
                                 <div>
                                     <span class="info-box-label text-muted d-block text-uppercase"
-                                        style="font-size: 11px; letter-spacing: 0.5px;">Why Join Us</span>
+                                        style="font-size: 11px; letter-spacing: 0.5px;">Culture</span>
                                     <strong class="info-box-value text-slate-800" style="font-size: 15px;">Caring
                                         Environment</strong>
                                 </div>
@@ -1207,7 +1185,7 @@
 
 
     <!-- Nearby Attractions Section -->
-    <section class="attractions-section" id="attractions">
+    <section class="attractions-section" id="attractions" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-end mb-5 text-start">
                 <div class="col-lg-8">
@@ -1235,106 +1213,55 @@
             <div class="position-relative">
                 <div class="swiper attractions-swiper">
                     <div class="swiper-wrapper">
-                        <!-- Slide 1: Kodanad / Abhayaranyam -->
+                        <!-- Slide 1: Munnar -->
                         <div class="swiper-slide h-auto">
                             <div class="attraction-card">
                                 <div class="attraction-img-wrapper">
-                                    <span class="attraction-distance"><i class="fa-solid fa-location-dot me-1"></i>12 km
-                                        from BMH</span>
-                                    <img src="assets/images/about_hospital.png" alt="Kodanad / Abhayaranyam"
-                                        class="attraction-img" />
+                                    <img src="assets/images/Munnar.PNG" alt="Munnar" class="attraction-img" />
                                 </div>
                                 <div class="attraction-card-body">
                                     <span class="attraction-tag">Wildlife & Nature</span>
-                                    <h4 class="attraction-title ttl-h4">Kodanad Elephant Park</h4>
-                                    <p class="attraction-desc text-muted">
-                                        A premier elephant training and rescue sanctuary nestled gracefully along the
-                                        scenic banks of the Periyar River.
-                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <h4 class="attraction-title ttl-h4">Munnar</h4>
+                                        <span class="attraction-distance"><i
+                                                class="fa-solid fa-location-dot me-1"></i>12 km from BMH</span>
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Slide 2: Thattekkad Bird Sanctuary -->
+                        <!-- Slide 2: Alapuzha -->
                         <div class="swiper-slide h-auto">
                             <div class="attraction-card">
                                 <div class="attraction-img-wrapper">
-                                    <span class="attraction-distance"><i class="fa-solid fa-location-dot me-1"></i>28 km
-                                        from BMH</span>
-                                    <img src="assets/images/hero_lobby.png" alt="Thattekkad Bird Sanctuary"
-                                        class="attraction-img" />
+                                    <img src="assets/images/Alapuzha.PNG" alt="Alapuzha" class="attraction-img" />
                                 </div>
                                 <div class="attraction-card-body">
                                     <span class="attraction-tag">Ecotourism</span>
-                                    <h4 class="attraction-title ttl-h4">Thattekkad Sanctuary</h4>
-                                    <p class="attraction-desc text-muted">
-                                        Kerala's first official bird sanctuary, acclaimed globally for housing hundreds
-                                        of rare and endemic avian species.
-                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <h4 class="attraction-title ttl-h4">Alapuzha</h4>
+                                        <span class="attraction-distance"><i
+                                                class="fa-solid fa-location-dot me-1"></i>28 km from BMH</span>
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Slide 3: Bhoothathankettu Dam -->
+                        <!-- Slide 3: Fort Kochi -->
                         <div class="swiper-slide h-auto">
                             <div class="attraction-card">
                                 <div class="attraction-img-wrapper">
-                                    <span class="attraction-distance"><i class="fa-solid fa-location-dot me-1"></i>25 km
-                                        from BMH</span>
-                                    <img src="assets/images/hero_surgery.png" alt="Bhoothathankettu Dam"
-                                        class="attraction-img" />
+                                    <img src="assets/images/Fort Kochi .PNG" alt="Fort Kochi" class="attraction-img" />
                                 </div>
                                 <div class="attraction-card-body">
                                     <span class="attraction-tag">Scenic Reserve</span>
-                                    <h4 class="attraction-title ttl-h4">Bhoothathankettu Dam</h4>
-                                    <p class="attraction-desc text-muted">
-                                        A picturesque dam surrounded by natural rock formations, deep reserve forests,
-                                        and boating facilities.
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 4: Iringole Kavu Sacred Grove -->
-                        <div class="swiper-slide h-auto">
-                            <div class="attraction-card">
-                                <div class="attraction-img-wrapper">
-                                    <span class="attraction-distance"><i class="fa-solid fa-location-dot me-1"></i>2.5
-                                        km from BMH</span>
-                                    <img src="assets/images/facility_scanner.png" alt="Iringole Kavu sacred grove"
-                                        class="attraction-img" />
-                                </div>
-                                <div class="attraction-card-body">
-                                    <span class="attraction-tag">Sacred Forest</span>
-                                    <h4 class="attraction-title ttl-h4">Iringole Sacred Kavu</h4>
-                                    <p class="attraction-desc text-muted">
-                                        An ancient, serene forest temple sanctuary preserving a vibrant, untouched
-                                        ecosystem of unique medicinal flora.
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 5: Kallil Rock-Cut Cave Temple -->
-                        <div class="swiper-slide h-auto">
-                            <div class="attraction-card">
-                                <div class="attraction-img-wrapper">
-                                    <span class="attraction-distance"><i class="fa-solid fa-location-dot me-1"></i>10 km
-                                        from BMH</span>
-                                    <img src="assets/images/images.jpeg" alt="Kallil Rock-cut Cave Temple"
-                                        class="attraction-img" />
-                                </div>
-                                <div class="attraction-card-body">
-                                    <span class="attraction-tag">Heritage Site</span>
-                                    <h4 class="attraction-title ttl-h4">Kallil Cave Temple</h4>
-                                    <p class="attraction-desc text-muted">
-                                        A historic 9th-century rock-cut cave temple complex set on a majestic hillock
-                                        with scenic panoramic views.
-                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <h4 class="attraction-title ttl-h4">Fort Kochi</h4>
+                                        <span class="attraction-distance"><i
+                                                class="fa-solid fa-location-dot me-1"></i>25 km from BMH</span>
+                                    </div>
 
                                 </div>
                             </div>
@@ -1349,7 +1276,7 @@
     </section>
 
     <!-- BMH Hospital "How to Reach" Section (No Map Layout) -->
-    <section id="reach" class="reach-section">
+    <section id="reach" class="reach-section" data-aos="fade-up">
         <div class="container">
 
             <!-- Section Header (Centered Layout matching other sections) -->
@@ -1506,14 +1433,6 @@
                         <li class="d-flex align-items-start mb-3">
                             <i class="fa-solid fa-location-dot contact-icon me-3 mt-1"></i>
                             <span class="contact-text">BMH Perumbavoor Perumbavoor, Kerala</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3 emergency-hotline">
-                            <i class="fa-solid fa-phone-flip contact-icon me-3 text-danger"></i>
-                            <span class="contact-text">
-                                <strong class="text-white d-block">Emergency (24/7):</strong>
-                                <a href="tel:+91XXXXXXXXXX"
-                                    class="hotline-link text-danger font-monospace font-weight-bold">+91 XXXXX XXXXX</a>
-                            </span>
                         </li>
                         <li class="d-flex align-items-start mb-3">
                             <i class="fa-solid fa-calendar-check contact-icon me-3 mt-1"></i>
@@ -1711,6 +1630,8 @@
     <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
 
     <!-- Core UI Interactions Script -->
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 
