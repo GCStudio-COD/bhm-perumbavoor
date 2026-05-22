@@ -5,8 +5,9 @@
 
 console.log("BMH Core UI Script initialized");
 
-// Initialize Lenis for smooth scrolling with a dedicated requestAnimationFrame loop
+// Initialize Lenis for smooth scrolling
 const lenis = new Lenis({
+    autoRaf: false,
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
     orientation: 'vertical',
@@ -18,6 +19,7 @@ const lenis = new Lenis({
     infinite: false,
 });
 
+// Run a manual requestAnimationFrame loop for reliable scroll ticks
 function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
