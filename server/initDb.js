@@ -8,29 +8,34 @@ require('dotenv').config();
 async function initDb() {
     console.log('Initializing database setup...');
 
-    // 1. Connect to default 'postgres' database to ensure the target database exists
+    // 1. Connect to default 'postgres' database to ensure the target database exists (Only if DB is local)
     const dbUrl = process.env.DATABASE_URL;
-    const defaultDbUrl = dbUrl.replace(/\/([^/]+)$/, '/postgres');
+    const isLocalDb = dbUrl.includes('localhost') || dbUrl.includes('127.0.0.1') || dbUrl.includes('::1');
     
-    console.log(`Connecting to default database to verify target database existence...`);
-    const sysClient = new Client({ connectionString: defaultDbUrl });
-    try {
-        await sysClient.connect();
-        const dbName = dbUrl.match(/\/([^/]+)$/)[1];
-        
-        const checkDb = await sysClient.query("SELECT 1 FROM pg_database WHERE datname = $1", [dbName]);
-        if (checkDb.rows.length === 0) {
-            console.log(`Database "${dbName}" does not exist. Creating it now...`);
-            await sysClient.query(`CREATE DATABASE "${dbName}"`);
-            console.log(`Database "${dbName}" created successfully.`);
-        } else {
-            console.log(`Database "${dbName}" already exists.`);
+    if (isLocalDb) {
+        const defaultDbUrl = dbUrl.replace(/\/([^/]+)$/, '/postgres');
+        console.log(`Connecting to local default database to verify target database existence...`);
+        const sysClient = new Client({ connectionString: defaultDbUrl });
+        try {
+            await sysClient.connect();
+            const dbName = dbUrl.match(/\/([^/]+)$/)[1];
+            
+            const checkDb = await sysClient.query("SELECT 1 FROM pg_database WHERE datname = $1", [dbName]);
+            if (checkDb.rows.length === 0) {
+                console.log(`Database "${dbName}" does not exist. Creating it now...`);
+                await sysClient.query(`CREATE DATABASE "${dbName}"`);
+                console.log(`Database "${dbName}" created successfully.`);
+            } else {
+                console.log(`Database "${dbName}" already exists.`);
+            }
+        } catch (err) {
+            console.error('Error connecting to default PostgreSQL database. Please make sure PostgreSQL is running on port 5432 and the credentials in .env are correct.', err);
+            process.exit(1);
+        } finally {
+            await sysClient.end();
         }
-    } catch (err) {
-        console.error('Error connecting to default PostgreSQL database. Please make sure PostgreSQL is running on port 5432 and the credentials in .env are correct.', err);
-        process.exit(1);
-    } finally {
-        await sysClient.end();
+    } else {
+        console.log('Remote/Cloud database detected. Skipping database auto-creation step and connecting directly.');
     }
 
     // 2. Connect to the actual target database to run schema and seed data
