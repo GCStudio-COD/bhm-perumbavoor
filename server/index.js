@@ -109,15 +109,15 @@ app.get('/api/homepage', async (req, res) => {
 app.post('/api/auth/login', async (req, res) => {
     const { username, password } = req.body;
     try {
-        const result = await db.query('SELECT * FROM admin_users WHERE username = $1', [username]);
+        const result = await db.query('SELECT * FROM admin_users WHERE username = $1 OR email = $1', [username]);
         if (result.rows.length === 0) {
-            return res.status(401).json({ message: 'Invalid username or password.' });
+            return res.status(401).json({ message: 'Invalid credentials.' });
         }
 
         const user = result.rows[0];
         const validPassword = await bcrypt.compare(password, user.password_hash);
         if (!validPassword) {
-            return res.status(401).json({ message: 'Invalid username or password.' });
+            return res.status(401).json({ message: 'Invalid credentials.' });
         }
 
         const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '2h' });
@@ -131,6 +131,130 @@ app.post('/api/auth/login', async (req, res) => {
 // Verify Token
 app.get('/api/auth/verify', authenticateToken, (req, res) => {
     res.json({ valid: true, username: req.user.username });
+});
+
+// Create Admin (Option for signup/registration)
+app.post('/api/auth/register', async (req, res) => {
+    const { username, email, password } = req.body;
+    if (!username || !email || !password) {
+        return res.status(400).json({ message: 'Please provide all details.' });
+    }
+    try {
+        // Check if user/email already exists
+        const exists = await db.query('SELECT 1 FROM admin_users WHERE username = $1 OR email = $2', [username, email]);
+        if (exists.rows.length > 0) {
+            return res.status(400).json({ message: 'Username or Email is already registered.' });
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash(password, salt);
+
+        await db.query(
+            'INSERT INTO admin_users (username, email, password_hash) VALUES ($1, $2, $3)',
+            [username, email, passwordHash]
+        );
+        res.json({ message: 'Admin account created successfully.' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error creating admin.' });
+    }
+});
+
+// Forgot Password (Send Reset Code)
+app.post('/api/auth/forgot-password', async (req, res) => {
+    const { email } = req.body;
+    if (!email) return res.status(400).json({ message: 'Email address is required.' });
+
+    try {
+        const result = await db.query('SELECT * FROM admin_users WHERE email = $1', [email]);
+        if (result.rows.length === 0) {
+            // Keep response secure: do not reveal if email exists or not
+            return res.json({ message: 'If that email is registered, a reset code was sent.' });
+        }
+
+        const user = result.rows[0];
+        // Generate a simple 6-digit verification code instead of a long URL for simplicity
+        const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
+        const expires = new Date(Date.now() + 15 * 60 * 1000); // 15 mins expiry
+
+        await db.query(
+            'UPDATE admin_users SET reset_token = $1, reset_token_expires = $2 WHERE id = $3',
+            [resetCode, expires, user.id]
+        );
+
+        // Configure Nodemailer
+        const nodemailer = require('nodemailer');
+        
+        // Use Gmail service if configured, otherwise fallback to Mailtrap/standard SMTP
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER || 'yourgmail@gmail.com',
+                pass: process.env.EMAIL_PASS || 'your_app_password'
+            }
+        });
+
+        const mailOptions = {
+            from: `"BMH Perumbavoor CMS" <${process.env.EMAIL_USER || 'yourgmail@gmail.com'}>`,
+            to: user.email,
+            subject: 'Admin Password Reset Code',
+            text: `You requested a password reset. Your verification code is: ${resetCode}\n\nThis code expires in 15 minutes.`,
+            html: `
+                <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f7f6;">
+                    <h2>BMH Perumbavoor CMS Dashboard</h2>
+                    <p>You requested a password reset. Use the verification code below to reset your password:</p>
+                    <div style="background-color: #0284c7; color: white; padding: 15px 30px; font-size: 24px; font-weight: bold; text-align: center; border-radius: 8px; display: inline-block; letter-spacing: 4px; margin: 10px 0;">
+                        ${resetCode}
+                    </div>
+                    <p>This code will expire in 15 minutes.</p>
+                </div>
+            `
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Mail sending failed:', error);
+            }
+        });
+
+        res.json({ message: 'If that email is registered, a reset code was sent.' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error processing forgot password.' });
+    }
+});
+
+// Reset Password (Verify Code & Update Password)
+app.post('/api/auth/reset-password', async (req, res) => {
+    const { email, code, newPassword } = req.body;
+    if (!email || !code || !newPassword) {
+        return res.status(400).json({ message: 'Please provide email, verification code, and new password.' });
+    }
+
+    try {
+        const result = await db.query(
+            'SELECT * FROM admin_users WHERE email = $1 AND reset_token = $2 AND reset_token_expires > NOW()',
+            [email, code]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(400).json({ message: 'Invalid or expired verification code.' });
+        }
+
+        const user = result.rows[0];
+        const salt = await bcrypt.genSalt(10);
+        const newHash = await bcrypt.hash(newPassword, salt);
+
+        await db.query(
+            'UPDATE admin_users SET password_hash = $1, reset_token = NULL, reset_token_expires = NULL WHERE id = $2',
+            [newHash, user.id]
+        );
+
+        res.json({ message: 'Password has been reset successfully.' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error resetting password.' });
+    }
 });
 
 // ==========================================

@@ -48,13 +48,14 @@ async function initDb() {
         // Hash and insert Admin User
         const adminUsername = process.env.ADMIN_USERNAME || 'admin';
         const adminPassword = process.env.ADMIN_PASSWORD || 'adminpassword123';
+        const adminEmail = process.env.ADMIN_EMAIL || 'admin@bmhperumbavoor.com';
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(adminPassword, salt);
         await client.query(
-            'INSERT INTO admin_users (username, password_hash) VALUES ($1, $2)',
-            [adminUsername, passwordHash]
+            'INSERT INTO admin_users (username, email, password_hash) VALUES ($1, $2, $3)',
+            [adminUsername, adminEmail, passwordHash]
         );
-        console.log(`Admin user "${adminUsername}" created.`);
+        console.log(`Admin user "${adminUsername}" created with email "${adminEmail}".`);
 
         // Seed Homepage Config
         const aboutFeatures = JSON.stringify([

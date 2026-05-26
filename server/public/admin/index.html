@@ -21,10 +21,11 @@
 <body>
 
     <!-- ==========================================
-    1. LOGIN PAGE
+    1. LOGIN PAGE & AUTH MODES
     =========================================== -->
     <div id="loginPage" class="login-container">
-        <div class="login-card">
+        <!-- 1A. SIGN IN CARD -->
+        <div class="login-card" id="signinCard">
             <div class="text-center mb-4">
                 <img src="/admin/bmh.png" id="loginLogo" alt="BMH Logo" style="height: 60px; margin-bottom: 16px;">
                 <h3 class="text-white">CMS Admin Login</h3>
@@ -32,16 +33,96 @@
             </div>
             <form id="loginForm">
                 <div class="mb-3">
-                    <label class="form-label text-muted small">Username</label>
-                    <input type="text" id="username" class="form-control" placeholder="Admin username" required>
+                    <label class="form-label text-muted small">Username or Email</label>
+                    <input type="text" id="username" class="form-control" placeholder="Admin username/email" required>
                 </div>
-                <div class="mb-4">
+                <div class="mb-3">
                     <label class="form-label text-muted small">Password</label>
                     <input type="password" id="password" class="form-control" placeholder="Password" required>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a href="#" class="text-primary small text-decoration-none" onclick="showAuthCard('forgotCard')">Forgot Password?</a>
+                    <a href="#" class="text-primary small text-decoration-none" onclick="showAuthCard('registerCard')">Register New Admin</a>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 py-3">
                     Sign In <i class="fa-solid fa-arrow-right ms-2"></i>
                 </button>
+            </form>
+        </div>
+
+        <!-- 1B. REGISTER CARD -->
+        <div class="login-card d-none" id="registerCard">
+            <div class="text-center mb-4">
+                <img src="/admin/bmh.png" alt="BMH Logo" style="height: 50px; margin-bottom: 12px;">
+                <h3 class="text-white">Create Admin Account</h3>
+                <p class="text-muted">Register a new administrator profile</p>
+            </div>
+            <form id="registerForm" onsubmit="submitRegister(event)">
+                <div class="mb-3">
+                    <label class="form-label text-muted small">Username</label>
+                    <input type="text" id="reg-username" class="form-control" placeholder="Create username" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-muted small">Email Address</label>
+                    <input type="email" id="reg-email" class="form-control" placeholder="Enter googlemail/email" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label text-muted small">Password</label>
+                    <input type="password" id="reg-password" class="form-control" placeholder="Create strong password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-3 mb-3">
+                    Create Account <i class="fa-solid fa-user-plus ms-2"></i>
+                </button>
+                <div class="text-center">
+                    <a href="#" class="text-muted small text-decoration-none" onclick="showAuthCard('signinCard')"><i class="fa-solid fa-arrow-left me-1"></i> Back to Login</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- 1C. FORGOT PASSWORD CARD -->
+        <div class="login-card d-none" id="forgotCard">
+            <div class="text-center mb-4">
+                <img src="/admin/bmh.png" alt="BMH Logo" style="height: 50px; margin-bottom: 12px;">
+                <h3 class="text-white">Forgot Password</h3>
+                <p class="text-muted">Enter your email to receive a 6-digit reset code</p>
+            </div>
+            <form id="forgotForm" onsubmit="submitForgotPassword(event)">
+                <div class="mb-4">
+                    <label class="form-label text-muted small">Email Address</label>
+                    <input type="email" id="forgot-email" class="form-control" placeholder="e.g. yourname@gmail.com" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-3 mb-3">
+                    Send Reset Code <i class="fa-solid fa-paper-plane ms-2"></i>
+                </button>
+                <div class="text-center">
+                    <a href="#" class="text-muted small text-decoration-none" onclick="showAuthCard('signinCard')"><i class="fa-solid fa-arrow-left me-1"></i> Back to Login</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- 1D. RESET PASSWORD CARD -->
+        <div class="login-card d-none" id="resetCard">
+            <div class="text-center mb-4">
+                <img src="/admin/bmh.png" alt="BMH Logo" style="height: 50px; margin-bottom: 12px;">
+                <h3 class="text-white">Reset Password</h3>
+                <p class="text-muted">Enter the 6-digit code sent to your email</p>
+            </div>
+            <form id="resetForm" onsubmit="submitResetPassword(event)">
+                <input type="hidden" id="reset-email-hidden">
+                <div class="mb-3">
+                    <label class="form-label text-muted small">Verification Code</label>
+                    <input type="text" id="reset-code" class="form-control text-center fs-4 fw-bold" placeholder="123456" maxlength="6" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label text-muted small">New Password</label>
+                    <input type="password" id="reset-new-password" class="form-control" placeholder="Enter new password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-3 mb-3">
+                    Update Password <i class="fa-solid fa-key ms-2"></i>
+                </button>
+                <div class="text-center">
+                    <a href="#" class="text-muted small text-decoration-none" onclick="showAuthCard('signinCard')"><i class="fa-solid fa-arrow-left me-1"></i> Back to Login</a>
+                </div>
             </form>
         </div>
     </div>
@@ -480,6 +561,14 @@
         function showLoginPage() {
             document.getElementById('loginPage').style.display = 'flex';
             document.getElementById('dashboardPage').style.display = 'none';
+            showAuthCard('signinCard');
+        }
+
+        function showAuthCard(cardId) {
+            // Hide all sub-cards
+            document.querySelectorAll('.login-card').forEach(card => card.classList.add('d-none'));
+            // Show target card
+            document.getElementById(cardId).classList.remove('d-none');
         }
 
         function showDashboard() {
@@ -530,6 +619,83 @@
                 showToast('Server connection failed.', true);
             }
         });
+
+        // Register Submit
+        async function submitRegister(e) {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            try {
+                const res = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showToast('Admin profile registered successfully!');
+                    document.getElementById('registerForm').reset();
+                    showAuthCard('signinCard');
+                } else {
+                    showToast(data.message || 'Registration failed.', true);
+                }
+            } catch (err) {
+                showToast('Connection error during registration.', true);
+            }
+        }
+
+        // Forgot Password Code Request
+        async function submitForgotPassword(e) {
+            e.preventDefault();
+            const email = document.getElementById('forgot-email').value;
+
+            try {
+                const res = await fetch('/api/auth/forgot-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showToast('Reset verification code sent if registered.');
+                    document.getElementById('reset-email-hidden').value = email;
+                    document.getElementById('forgotForm').reset();
+                    showAuthCard('resetCard');
+                } else {
+                    showToast(data.message || 'Failed to request reset.', true);
+                }
+            } catch (err) {
+                showToast('Connection error requesting code.', true);
+            }
+        }
+
+        // Verify Code and Update Password
+        async function submitResetPassword(e) {
+            e.preventDefault();
+            const email = document.getElementById('reset-email-hidden').value;
+            const code = document.getElementById('reset-code').value;
+            const newPassword = document.getElementById('reset-new-password').value;
+
+            try {
+                const res = await fetch('/api/auth/reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, code, newPassword })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showToast('Password updated successfully!');
+                    document.getElementById('resetForm').reset();
+                    showAuthCard('signinCard');
+                } else {
+                    showToast(data.message || 'Failed to reset password.', true);
+                }
+            } catch (err) {
+                showToast('Connection error resetting password.', true);
+            }
+        }
 
         function logoutAdmin() {
             localStorage.removeItem('bmh_admin_token');

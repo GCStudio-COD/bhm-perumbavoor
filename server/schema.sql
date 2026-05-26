@@ -15,7 +15,10 @@ DROP TABLE IF EXISTS reach_modes CASCADE;
 CREATE TABLE admin_users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
+    reset_token VARCHAR(255),
+    reset_token_expires TIMESTAMP,
     created_at TIMESTAMP DEFAULT NOW()
 );
 
