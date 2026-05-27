@@ -2050,6 +2050,22 @@ header {
     .gallery-filters {
         margin-bottom: 20px;
 
+        @media (max-width: 991.98px) {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            padding: 5px 4px 15px 4px !important;
+            gap: 12px !important;
+            justify-content: flex-start !important;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         .filter-btn {
             background: var(--bg-card);
             border: 1.5px solid var(--border);
@@ -2061,6 +2077,7 @@ header {
             border-radius: 30px;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
+            white-space: nowrap;
 
             &:hover {
                 border-color: var(--primary);
@@ -2077,33 +2094,98 @@ header {
         }
     }
 
-    // Desktop Grid Layout
-    .gallery-desktop-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        transition: opacity 0.3s ease;
-
-        @media (max-width: 1199.98px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .gallery-item {
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    // Mobile Swiper Layout
-    .gallery-mobile-swiper {
+    // Swiper Layout
+    .gallery-swiper {
         overflow: hidden !important;
-        padding-bottom: 50px !important;
+        padding-bottom: 20px !important;
         transition: opacity 0.3s ease;
 
         .swiper-slide {
             height: auto;
             transition: opacity 0.4s ease;
+        }
+    }
+
+    // Gallery Controls (Centered pagination and nav buttons)
+    .gallery-controls-group {
+        position: relative;
+        margin-top: 40px !important;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+
+        .gallery-nav-group {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f1f5f9; // Soft slate background for controls capsule
+            padding: 8px 20px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+            gap: 16px;
+
+            @media (max-width: 767.98px) {
+                padding: 6px 14px;
+                gap: 10px;
+            }
+
+            .btn-nav {
+                position: static !important;
+                width: 38px !important;
+                height: 38px !important;
+                background-color: var(--white) !important;
+                color: var(--primary) !important;
+                border: 1px solid var(--border) !important;
+                border-radius: 50% !important;
+                margin-top: 0 !important;
+                font-size: 12px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+                cursor: pointer !important;
+
+                @media (max-width: 767.98px) {
+                    width: 32px !important;
+                    height: 32px !important;
+                    font-size: 10px !important;
+                }
+
+                &::after {
+                    display: none !important;
+                }
+
+                &:hover:not(.swiper-button-disabled) {
+                    background-color: var(--primary) !important;
+                    color: var(--white) !important;
+                    border-color: var(--primary) !important;
+                    box-shadow: 0 4px 10px rgba(0, 91, 170, 0.15);
+                }
+
+                &.swiper-button-disabled {
+                    opacity: 0.4 !important;
+                    cursor: not-allowed !important;
+                    transform: none !important;
+                    box-shadow: none !important;
+                    background-color: var(--white) !important;
+                    color: var(--text-muted) !important;
+                    border-color: var(--border) !important;
+                }
+            }
+
+            .gallery-pagination {
+                position: static !important;
+                width: auto !important;
+                display: inline-flex !important;
+                gap: 6px;
+                margin: 0 !important;
+                transform: none !important;
+                vertical-align: middle;
+
+                @media (max-width: 767.98px) {
+                    display: none !important;
+                }
+            }
         }
     }
 
@@ -2784,6 +2866,15 @@ header {
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover, 
+            &:-webkit-autofill:focus {
+                -webkit-text-fill-color: var(--white) !important;
+                -webkit-box-shadow: 0 0 0px 1000px var(--primary) inset !important;
+                transition: background-color 5000s ease-in-out 0s;
+                caret-color: var(--white) !important;
+            }
+
             &::placeholder {
                 color: rgba(255, 255, 255, 0.5) !important;
                 font-weight: 500;
@@ -3107,7 +3198,7 @@ header {
     background: rgba(0, 0, 0, 0.85);
     color: #fff;
     padding: 1rem 2rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     /* stack message and buttons */
     align-items: center;
@@ -3144,38 +3235,4 @@ header {
         }
     }
 }
-
-// ==========================================================================
-// Gallery Pagination Controls
-// ==========================================================================
-.gallery-pagination-container {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 32px;
-    
-    .page-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 1px solid var(--glass-border);
-        background-color: var(--glass-bg);
-        color: var(--body);
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        
-        &:hover {
-            background-color: var(--primary-light);
-            color: var(--primary);
-        }
-        
-        &.active {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-    }
-}
+

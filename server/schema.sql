@@ -10,6 +10,8 @@ DROP TABLE IF EXISTS gallery CASCADE;
 DROP TABLE IF EXISTS events CASCADE;
 DROP TABLE IF EXISTS attractions CASCADE;
 DROP TABLE IF EXISTS reach_modes CASCADE;
+DROP TABLE IF EXISTS job_positions CASCADE;
+DROP TABLE IF EXISTS job_applications CASCADE;
 
 -- Admin Users Table
 CREATE TABLE admin_users (
@@ -136,4 +138,25 @@ CREATE TABLE reach_modes (
     description TEXT,
     badge_info VARCHAR(100),
     sort_order INT DEFAULT 0
+);
+
+-- Job Positions Table
+CREATE TABLE job_positions (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) UNIQUE NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    sort_order INT DEFAULT 0
+);
+
+-- Job Applications Table
+CREATE TABLE job_applications (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    phone VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    position VARCHAR(255) NOT NULL,
+    experience VARCHAR(100) NOT NULL,
+    message TEXT,
+    resume_url VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
 );

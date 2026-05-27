@@ -224,6 +224,23 @@ async function initDb() {
         }
         console.log('Reach modes seeded.');
 
+        // Seed Job Positions
+        const defaultPositions = [
+            ['Medical Consultant / Specialist', 1],
+            ['Resident Medical Officer (RMO)', 2],
+            ['Registered Nurse (Staff Nurse)', 3],
+            ['Nursing Supervisor / Lead', 4],
+            ['Allied Health Professional / Lab Tech', 5],
+            ['Administrative / Operations Executive', 6]
+        ];
+        for (const pos of defaultPositions) {
+            await client.query(
+                'INSERT INTO job_positions (title, sort_order) VALUES ($1, $2)',
+                pos
+            );
+        }
+        console.log('Job positions seeded.');
+
         await client.query('COMMIT');
         console.log('Database initialization & seeding complete.');
     } catch (err) {

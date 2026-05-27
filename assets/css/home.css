@@ -2343,6 +2343,22 @@ header .navbar-collapse.show {
 .gallery-section .gallery-filters {
   margin-bottom: 20px;
 }
+@media (max-width: 991.98px) {
+  .gallery-section .gallery-filters {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 5px 4px 15px 4px !important;
+    gap: 12px !important;
+    justify-content: flex-start !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .gallery-section .gallery-filters::-webkit-scrollbar {
+    display: none;
+  }
+}
 .gallery-section .gallery-filters .filter-btn {
   background: var(--bg-card);
   border: 1.5px solid var(--border);
@@ -2354,6 +2370,7 @@ header .navbar-collapse.show {
   border-radius: 30px;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
+  white-space: nowrap;
 }
 .gallery-section .gallery-filters .filter-btn:hover {
   border-color: var(--primary);
@@ -2366,30 +2383,92 @@ header .navbar-collapse.show {
   color: var(--white);
   box-shadow: 0 6px 20px rgba(0, 91, 170, 0.25);
 }
-.gallery-section .gallery-desktop-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  transition: opacity 0.3s ease;
-}
-@media (max-width: 1199.98px) {
-  .gallery-section .gallery-desktop-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.gallery-section .gallery-desktop-grid .gallery-item {
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
-  opacity: 1;
-  transform: scale(1);
-}
-.gallery-section .gallery-mobile-swiper {
+.gallery-section .gallery-swiper {
   overflow: hidden !important;
-  padding-bottom: 50px !important;
+  padding-bottom: 20px !important;
   transition: opacity 0.3s ease;
 }
-.gallery-section .gallery-mobile-swiper .swiper-slide {
+.gallery-section .gallery-swiper .swiper-slide {
   height: auto;
   transition: opacity 0.4s ease;
+}
+.gallery-section .gallery-controls-group {
+  position: relative;
+  margin-top: 40px !important;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+.gallery-section .gallery-controls-group .gallery-nav-group {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+  gap: 16px;
+}
+@media (max-width: 767.98px) {
+  .gallery-section .gallery-controls-group .gallery-nav-group {
+    padding: 6px 14px;
+    gap: 10px;
+  }
+}
+.gallery-section .gallery-controls-group .gallery-nav-group .btn-nav {
+  position: static !important;
+  width: 38px !important;
+  height: 38px !important;
+  background-color: var(--white) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 50% !important;
+  margin-top: 0 !important;
+  font-size: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  cursor: pointer !important;
+}
+@media (max-width: 767.98px) {
+  .gallery-section .gallery-controls-group .gallery-nav-group .btn-nav {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 10px !important;
+  }
+}
+.gallery-section .gallery-controls-group .gallery-nav-group .btn-nav::after {
+  display: none !important;
+}
+.gallery-section .gallery-controls-group .gallery-nav-group .btn-nav:hover:not(.swiper-button-disabled) {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 10px rgba(0, 91, 170, 0.15);
+}
+.gallery-section .gallery-controls-group .gallery-nav-group .btn-nav.swiper-button-disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: var(--white) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border) !important;
+}
+.gallery-section .gallery-controls-group .gallery-nav-group .gallery-pagination {
+  position: static !important;
+  width: auto !important;
+  display: inline-flex !important;
+  gap: 6px;
+  margin: 0 !important;
+  transform: none !important;
+  vertical-align: middle;
+}
+@media (max-width: 767.98px) {
+  .gallery-section .gallery-controls-group .gallery-nav-group .gallery-pagination {
+    display: none !important;
+  }
 }
 .gallery-section .gallery-card {
   position: relative;
@@ -2965,6 +3044,14 @@ header .navbar-collapse.show {
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
+.careers-section .form-underline-group .form-control-underline:-webkit-autofill,
+.careers-section .form-underline-group .form-control-underline:-webkit-autofill:hover, 
+.careers-section .form-underline-group .form-control-underline:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--white) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--primary) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: var(--white) !important;
+}
 .careers-section .form-underline-group .form-control-underline::placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
   font-weight: 500;
@@ -3233,7 +3320,7 @@ header .navbar-collapse.show {
   background: rgba(0, 0, 0, 0.85);
   color: #fff;
   padding: 1rem 2rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   /* stack message and buttons */
   align-items: center;
@@ -3266,34 +3353,6 @@ header .navbar-collapse.show {
   border: 1px solid #fff;
 }
 
-/* Gallery Pagination Controls */
-.gallery-pagination-container {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 32px;
-}
-.gallery-pagination-container .page-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--glass-border);
-    background-color: var(--glass-bg);
-    color: var(--body);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-.gallery-pagination-container .page-btn:hover {
-    background-color: var(--primary-light);
-    color: var(--primary);
-}
-.gallery-pagination-container .page-btn.active {
-    background-color: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
+
 
 /*# sourceMappingURL=home.css.map */

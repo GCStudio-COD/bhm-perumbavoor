@@ -176,28 +176,55 @@ if (appointmentForm) {
             submitButton.disabled = true;
             submitButton.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin me-2"></i> Submitting...`;
 
-            setTimeout(() => {
-                const modalBody = appointmentForm.closest('.modal-body');
+            // Prepare FormData
+            const formData = new FormData();
+            formData.append('fullName', document.getElementById('modalFullName').value);
+            formData.append('phone', document.getElementById('modalPhone').value);
+            formData.append('email', document.getElementById('modalEmail').value);
+            formData.append('position', document.getElementById('modalPosition').value);
+            formData.append('experience', document.getElementById('modalExperience').value);
+            formData.append('message', document.getElementById('modalMessage').value);
+            formData.append('resume', document.getElementById('modalResume').files[0]);
 
-                appointmentForm.style.transition = 'opacity 0.3s';
-                appointmentForm.style.opacity = '0';
+            fetch(`${API_URL}/applications`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (res) => {
+                if (res.ok) {
+                    const modalBody = appointmentForm.closest('.modal-body');
 
-                setTimeout(() => {
-                    appointmentForm.classList.add('d-none');
+                    appointmentForm.style.transition = 'opacity 0.3s';
+                    appointmentForm.style.opacity = '0';
 
-                    const successAlert = document.createElement('div');
-                    successAlert.className = 'text-center py-5';
-                    successAlert.innerHTML = `
-                        <div class="mb-4">
-                            <i class="fa-regular fa-circle-check text-success" style="font-size: 64px;"></i>
-                        </div>
-                        <h3 class="text-white font-weight-bold mb-3" style="font-family: 'Montserrat', sans-serif;">Application Submitted!</h3>
-                        <p class="text-muted mx-auto mb-4" style="max-width: 450px;">Thank you for your interest in BMH Perumbavoor. Our Human Resources team will review your credentials and contact you shortly.</p>
-                        <button type="button" class="btn btn-primary rounded-pill px-5 py-2" data-bs-dismiss="modal">Close Window</button>
-                    `;
-                    modalBody.appendChild(successAlert);
-                }, 300);
-            }, 1500);
+                    setTimeout(() => {
+                        appointmentForm.classList.add('d-none');
+
+                        const successAlert = document.createElement('div');
+                        successAlert.className = 'text-center py-5';
+                        successAlert.innerHTML = `
+                            <div class="mb-4">
+                                <i class="fa-regular fa-circle-check text-success" style="font-size: 64px;"></i>
+                            </div>
+                            <h3 class="text-white font-weight-bold mb-3" style="font-family: 'Montserrat', sans-serif;">Application Submitted!</h3>
+                            <p class="text-muted mx-auto mb-4" style="max-width: 450px;">Thank you for your interest in BMH Perumbavoor. Our Human Resources team will review your credentials and contact you shortly.</p>
+                            <button type="button" class="btn btn-primary rounded-pill px-5 py-2" data-bs-dismiss="modal">Close Window</button>
+                        `;
+                        modalBody.appendChild(successAlert);
+                    }, 300);
+                } else {
+                    const errData = await res.json();
+                    alert(errData.message || 'Error submitting application.');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = `Submit Application <i class="fa-solid fa-paper-plane ms-2"></i>`;
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+                alert('Connection error submitting application. Please try again.');
+                submitButton.disabled = false;
+                submitButton.innerHTML = `Submit Application <i class="fa-solid fa-paper-plane ms-2"></i>`;
+            });
         }
 
         appointmentForm.classList.add('was-validated');
@@ -412,23 +439,49 @@ if (careersForm && careersFormContainer && careersSuccessState) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Submitting CV...`;
 
-        setTimeout(() => {
-            // Fade out form and fade in success tick card
-            careersFormContainer.style.transition = 'opacity 0.4s ease';
-            careersFormContainer.style.opacity = '0';
+        // Prepare FormData
+        const formData = new FormData();
+        formData.append('fullName', document.getElementById('careersName').value);
+        formData.append('phone', document.getElementById('careersPhone').value);
+        formData.append('email', document.getElementById('careersEmail').value);
+        formData.append('position', 'General CV Upload (Careers Section)');
+        formData.append('experience', 'Not Specified');
+        formData.append('message', document.getElementById('careersMessage').value);
+        formData.append('resume', document.getElementById('careersFile').files[0]);
 
-            setTimeout(() => {
-                careersFormContainer.classList.add('d-none');
-                careersSuccessState.classList.remove('d-none');
-                careersSuccessState.style.opacity = '0';
-                careersSuccessState.style.transition = 'opacity 0.4s ease';
+        fetch(`${API_URL}/applications`, {
+            method: 'POST',
+            body: formData
+        })
+        .then(async (res) => {
+            if (res.ok) {
+                // Fade out form and fade in success tick card
+                careersFormContainer.style.transition = 'opacity 0.4s ease';
+                careersFormContainer.style.opacity = '0';
 
                 setTimeout(() => {
-                    careersSuccessState.style.opacity = '1';
-                }, 50);
-            }, 400);
+                    careersFormContainer.classList.add('d-none');
+                    careersSuccessState.classList.remove('d-none');
+                    careersSuccessState.style.opacity = '0';
+                    careersSuccessState.style.transition = 'opacity 0.4s ease';
 
-        }, 1800);
+                    setTimeout(() => {
+                        careersSuccessState.style.opacity = '1';
+                    }, 50);
+                }, 400);
+            } else {
+                const errData = await res.json();
+                alert(errData.message || 'Error submitting application.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `Submit Application <i class="fa-solid fa-arrow-right"></i>`;
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            alert('Connection error submitting application. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `Submit Application <i class="fa-solid fa-arrow-right"></i>`;
+        });
     });
 }
 
@@ -554,11 +607,8 @@ const getImageUrl = (url) => {
 };
 
 // Gallery variables
-let originalDesktopItems = [];
-let originalMobileSlides = [];
+let originalSlides = [];
 let gallerySwiperInstance = null;
-const itemsPerPage = 6;
-let currentPage = 1;
 
 async function loadCMSData() {
     try {
@@ -566,7 +616,18 @@ async function loadCMSData() {
         const res = await fetch(`${API_URL}/homepage`);
         if (!res.ok) throw new Error('Failed to fetch homepage data');
         const data = await res.json();
-        const { config, heroes, facilities, specialties, gallery, events, attractions, reachModes } = data;
+        const { config, heroes, facilities, specialties, gallery, events, attractions, reachModes, jobPositions } = data;
+
+        // Populate Positions Dropdown
+        if (jobPositions && jobPositions.length > 0) {
+            const modalPositionSelect = document.getElementById('modalPosition');
+            if (modalPositionSelect) {
+                modalPositionSelect.innerHTML = `
+                    <option value="" selected disabled>Choose position...</option>
+                    ${jobPositions.map(pos => `<option value="${pos.title}">${pos.title}</option>`).join('')}
+                `;
+            }
+        }
 
         // 1. Populate Config Texts
         if (config) {
@@ -910,10 +971,8 @@ async function loadCMSData() {
 
 // Function to construct and handle gallery pagination/filtering
 function initDynamicGallery(items) {
-    const desktopGrid = document.querySelector('.gallery-desktop-grid');
-    const mobileSwiper = document.querySelector('.gallery-mobile-swiper');
-    
-    if (!desktopGrid || !mobileSwiper) return;
+    const swiperEl = document.querySelector('.gallery-swiper');
+    if (!swiperEl) return;
 
     const catMap = {
         'infra': 'Infrastructure',
@@ -921,32 +980,8 @@ function initDynamicGallery(items) {
         'rooms': 'Wards & Lobbies'
     };
 
-    // 1. Construct original desktop items array
-    originalDesktopItems = items.map(item => {
-        const div = document.createElement('div');
-        div.className = 'gallery-item';
-        div.setAttribute('data-category', item.category);
-        div.innerHTML = `
-            <div class="gallery-card">
-                <div class="gallery-img-wrapper">
-                    <img loading="lazy" src="${getImageUrl(item.image_url)}" alt="${item.title}" class="gallery-img" />
-                    <div class="gallery-overlay">
-                        <div class="gallery-info text-center p-3">
-                            <span class="gallery-item-category">${catMap[item.category] || item.category}</span>
-                            <h4 class="gallery-item-title">${item.title}</h4>
-                            <button class="gallery-zoom-btn mt-3" data-bs-toggle="modal" data-bs-target="#lightboxModal" data-src="${getImageUrl(item.image_url)}" data-title="${item.title}">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        return div;
-    });
-
-    // 2. Construct original mobile slides array
-    originalMobileSlides = items.map(item => {
+    // Construct original slides array
+    originalSlides = items.map(item => {
         const div = document.createElement('div');
         div.className = 'swiper-slide';
         div.setAttribute('data-category', item.category);
@@ -969,84 +1004,70 @@ function initDynamicGallery(items) {
         return div;
     });
 
-    // Set initial view on load
-    renderDesktopPage(1, originalDesktopItems);
-    initGalleryMobileSwiper();
-}
+    const swiperWrapper = swiperEl.querySelector('.swiper-wrapper');
+    if (swiperWrapper) {
+        swiperWrapper.innerHTML = '';
+        originalSlides.forEach(slide => swiperWrapper.appendChild(slide.cloneNode(true)));
+    }
 
-function renderDesktopPage(page, items) {
-    const desktopGrid = document.querySelector('.gallery-desktop-grid');
-    const paginationContainer = document.querySelector('.gallery-pagination-container');
-    if (!desktopGrid) return;
-
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const pageItems = items.slice(start, end);
-    desktopGrid.innerHTML = '';
-    pageItems.forEach(item => desktopGrid.appendChild(item));
-    currentPage = page;
-    
-    if (paginationContainer) {
-        const totalPages = Math.ceil(items.length / itemsPerPage);
-        paginationContainer.innerHTML = '';
-        if (totalPages > 1) {
-            for (let i = 1; i <= totalPages; i++) {
-                const btn = document.createElement('button');
-                btn.textContent = i;
-                btn.dataset.page = i;
-                btn.className = 'page-btn';
-                if (i === currentPage) btn.classList.add('active');
-                btn.addEventListener('click', () => renderDesktopPage(i, items));
-                paginationContainer.appendChild(btn);
-            }
-        }
+    initGallerySwiper();
+    if (gallerySwiperInstance) {
+        gallerySwiperInstance.update();
+        gallerySwiperInstance.slideTo(0, 0);
     }
 }
 
-function initGalleryMobileSwiper() {
-    const swiperEl = document.querySelector('.gallery-mobile-swiper');
+function initGallerySwiper() {
+    const swiperEl = document.querySelector('.gallery-swiper');
     if (!swiperEl) return;
-    
-    if (window.innerWidth < 992) {
-        if (!gallerySwiperInstance) {
-            const swiperWrapper = swiperEl.querySelector('.swiper-wrapper');
-            if (swiperWrapper && swiperWrapper.children.length === 0) {
-                originalMobileSlides.forEach(slide => swiperWrapper.appendChild(slide));
-            }
-            gallerySwiperInstance = new Swiper('.gallery-mobile-swiper', {
-                slidesPerView: 1.2,
-                spaceBetween: 16,
-                grabCursor: true,
-                loop: false,
-                touchReleaseOnEdges: true,
-                observer: true,
-                observeParents: true,
-                pagination: {
-                    el: '.gallery-pagination',
-                    clickable: true,
+
+    const swiperWrapper = swiperEl.querySelector('.swiper-wrapper');
+    if (!swiperWrapper) return;
+
+    // Collect original slides from static HTML if they haven't been stored/loaded yet
+    if (originalSlides.length === 0 && swiperWrapper.children.length > 0) {
+        originalSlides = Array.from(swiperWrapper.children).map(child => child.cloneNode(true));
+    }
+
+    if (!gallerySwiperInstance) {
+        gallerySwiperInstance = new Swiper('.gallery-swiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 16,
+            grabCursor: true,
+            loop: false,
+            touchReleaseOnEdges: true,
+            observer: true,
+            observeParents: true,
+            navigation: {
+                nextEl: '.gallery-next',
+                prevEl: '.gallery-prev',
+            },
+            pagination: {
+                el: '.gallery-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 20,
                 },
-                breakpoints: {
-                    576: {
-                        slidesPerView: 1.5,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2.2,
-                        spaceBetween: 24,
-                    }
+                768: {
+                    slidesPerView: 2.3,
+                    spaceBetween: 24,
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                },
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
                 }
-            });
-        }
-    } else {
-        if (gallerySwiperInstance) {
-            gallerySwiperInstance.destroy(true, true);
-            gallerySwiperInstance = null;
-        }
+            }
+        });
     }
 }
-
-// Adjust mobile gallery Swiper on resize
-window.addEventListener('resize', initGalleryMobileSwiper);
 
 // Initialize Filters
 const galleryFilterBtns = document.querySelectorAll('.gallery-filters .filter-btn');
@@ -1057,33 +1078,17 @@ if (galleryFilterBtns.length) {
             button.classList.add('active');
 
             const filterValue = button.getAttribute('data-filter');
-            const desktopGrid = document.querySelector('.gallery-desktop-grid');
-            const swiperWrapper = document.querySelector('.gallery-mobile-swiper .swiper-wrapper');
+            const swiperWrapper = document.querySelector('.gallery-swiper .swiper-wrapper');
 
-            // Filter Desktop Grid
-            if (desktopGrid) {
-                desktopGrid.style.opacity = '0';
-                setTimeout(() => {
-                    const filteredDesktop = originalDesktopItems.filter(item => {
-                        const category = item.getAttribute('data-category');
-                        return filterValue === 'all' || category === filterValue;
-                    });
-                    renderDesktopPage(1, filteredDesktop);
-                    desktopGrid.style.opacity = '1';
-                    if (typeof lenis !== 'undefined') lenis.resize();
-                }, 200);
-            }
-
-            // Filter Mobile Swiper
             if (swiperWrapper) {
                 swiperWrapper.style.opacity = '0';
                 setTimeout(() => {
                     swiperWrapper.innerHTML = '';
-                    const matchingMobile = originalMobileSlides.filter(item => {
+                    const matchingSlides = originalSlides.filter(item => {
                         const category = item.getAttribute('data-category');
                         return filterValue === 'all' || category === filterValue;
                     });
-                    matchingMobile.forEach(item => swiperWrapper.appendChild(item));
+                    matchingSlides.forEach(item => swiperWrapper.appendChild(item.cloneNode(true)));
                     swiperWrapper.style.opacity = '1';
                     if (gallerySwiperInstance) {
                         gallerySwiperInstance.update();
@@ -1095,6 +1100,9 @@ if (galleryFilterBtns.length) {
         });
     });
 }
+
+// Initialize static gallery swiper on page load
+initGallerySwiper();
 
 // Call CMS Load on startup
 loadCMSData();

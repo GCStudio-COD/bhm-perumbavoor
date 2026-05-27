@@ -33,15 +33,15 @@
             <div class="text-center mb-4">
                 <img src="/admin/bmh.png" id="loginLogo" alt="BMH Logo" style="height: 60px; margin-bottom: 16px;">
                 <h3 class="text-white">CMS Admin Login</h3>
-                <p class="text-muted">Enter credentials to edit website content</p>
+                <p class="text-white">Enter credentials to edit website content</p>
             </div>
             <form id="loginForm">
                 <div class="mb-3">
-                    <label class="form-label text-muted small">Username or Email</label>
+                    <label class="form-label text-white small">Username or Email</label>
                     <input type="text" id="username" class="form-control" placeholder="Admin username/email" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label text-muted small">Password</label>
+                    <label class="form-label text-white small">Password</label>
                     <input type="password" id="password" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -61,20 +61,20 @@
             <div class="text-center mb-4">
                 <img src="/admin/bmh.png" alt="BMH Logo" style="height: 50px; margin-bottom: 12px;">
                 <h3 class="text-white">Create Admin Account</h3>
-                <p class="text-muted">Register a new administrator profile</p>
+                <p class="text-white">Register a new administrator profile</p>
             </div>
             <form id="registerForm" onsubmit="submitRegister(event)">
                 <div class="mb-3">
-                    <label class="form-label text-muted small">Username</label>
+                    <label class="form-label text-white small">Username</label>
                     <input type="text" id="reg-username" class="form-control" placeholder="Create username" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label text-muted small">Email Address</label>
+                    <label class="form-label text-white small">Email Address</label>
                     <input type="email" id="reg-email" class="form-control" placeholder="Enter googlemail/email"
                         required>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label text-muted small">Password</label>
+                    <label class="form-label text-white small">Password</label>
                     <input type="password" id="reg-password" class="form-control" placeholder="Create strong password"
                         required>
                 </div>
@@ -82,7 +82,7 @@
                     Create Account <i class="fa-solid fa-user-plus ms-2"></i>
                 </button>
                 <div class="text-center">
-                    <a href="#" class="text-muted small text-decoration-none" onclick="showAuthCard('signinCard')"><i
+                    <a href="#" class="text-white small text-decoration-none" onclick="showAuthCard('signinCard')"><i
                             class="fa-solid fa-arrow-left me-1"></i> Back to Login</a>
                 </div>
             </form>
@@ -93,11 +93,11 @@
             <div class="text-center mb-4">
                 <img src="/admin/bmh.png" alt="BMH Logo" style="height: 50px; margin-bottom: 12px;">
                 <h3 class="text-white">Forgot Password</h3>
-                <p class="text-muted">Enter your email to receive a 6-digit reset code</p>
+                <p class="text-white">Enter your email to receive a 6-digit reset code</p>
             </div>
             <form id="forgotForm" onsubmit="submitForgotPassword(event)">
                 <div class="mb-4">
-                    <label class="form-label text-muted small">Email Address</label>
+                    <label class="form-label text-white small">Email Address</label>
                     <input type="email" id="forgot-email" class="form-control" placeholder="e.g. yourname@gmail.com"
                         required>
                 </div>
@@ -105,7 +105,7 @@
                     Send Reset Code <i class="fa-solid fa-paper-plane ms-2"></i>
                 </button>
                 <div class="text-center">
-                    <a href="#" class="text-muted small text-decoration-none" onclick="showAuthCard('signinCard')"><i
+                    <a href="#" class="text-white small text-decoration-none" onclick="showAuthCard('signinCard')"><i
                             class="fa-solid fa-arrow-left me-1"></i> Back to Login</a>
                 </div>
             </form>
@@ -116,17 +116,17 @@
             <div class="text-center mb-4">
                 <img src="/admin/bmh.png" alt="BMH Logo" style="height: 50px; margin-bottom: 12px;">
                 <h3 class="text-white">Reset Password</h3>
-                <p class="text-muted">Enter the 6-digit code sent to your email</p>
+                <p class="text-white">Enter the 6-digit code sent to your email</p>
             </div>
             <form id="resetForm" onsubmit="submitResetPassword(event)">
                 <input type="hidden" id="reset-email-hidden">
                 <div class="mb-3">
-                    <label class="form-label text-muted small">Verification Code</label>
+                    <label class="form-label text-white small">Verification Code</label>
                     <input type="text" id="reset-code" class="form-control text-center fs-4 fw-bold"
                         placeholder="123456" maxlength="6" required>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label text-muted small">New Password</label>
+                    <label class="form-label text-white small">New Password</label>
                     <input type="password" id="reset-new-password" class="form-control" placeholder="Enter new password"
                         required>
                 </div>
@@ -134,7 +134,7 @@
                     Update Password <i class="fa-solid fa-key ms-2"></i>
                 </button>
                 <div class="text-center">
-                    <a href="#" class="text-muted small text-decoration-none" onclick="showAuthCard('signinCard')"><i
+                    <a href="#" class="text-white small text-decoration-none" onclick="showAuthCard('signinCard')"><i
                             class="fa-solid fa-arrow-left me-1"></i> Back to Login</a>
                 </div>
             </form>
@@ -178,6 +178,12 @@
                 </button>
                 <button class="nav-item-btn" onclick="switchTab('tab-media', this)">
                     <i class="fa-solid fa-photo-film"></i> <span>Media Library</span>
+                </button>
+                <button class="nav-item-btn" onclick="switchTab('tab-positions', this)">
+                    <i class="fa-solid fa-briefcase"></i> <span>Job Positions</span>
+                </button>
+                <button class="nav-item-btn" onclick="switchTab('tab-applications', this)">
+                    <i class="fa-solid fa-file-invoice"></i> <span>Applications</span>
                 </button>
             </div>
             <div class="mt-auto pt-3 border-top border-secondary">
@@ -223,21 +229,21 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Badge Label</label>
+                                    <label class="form-label text-white small">Badge Label</label>
                                     <input type="text" class="form-control" name="about_badge" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Title HTML</label>
+                                    <label class="form-label text-white small">Title HTML</label>
                                     <input type="text" class="form-control" name="about_title" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Lead Text Paragraph</label>
+                                    <label class="form-label text-white small">Lead Text Paragraph</label>
                                     <textarea class="form-control" name="about_lead" rows="3" required></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Featured Image</label>
+                                    <label class="form-label text-white small">Featured Image</label>
                                     <input type="text" class="form-control" name="about_image" id="about_image_url"
                                         placeholder="/uploads/..." required>
                                     <div class="input-group mt-2">
@@ -254,13 +260,13 @@
                         <div class="row g-4 mt-2">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Main Description Paragraph 1</label>
+                                    <label class="form-label text-white small">Main Description Paragraph 1</label>
                                     <textarea class="form-control" name="about_paragraph1" rows="4" required></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Main Description Paragraph 2</label>
+                                    <label class="form-label text-white small">Main Description Paragraph 2</label>
                                     <textarea class="form-control" name="about_paragraph2" rows="4" required></textarea>
                                 </div>
                             </div>
@@ -270,15 +276,15 @@
                     <div class="content-card">
                         <h4 class="mb-4 text-white">Collapsible Details (Read More)</h4>
                         <div class="mb-3">
-                            <label class="form-label text-muted small">Collapsible Paragraph 1</label>
+                            <label class="form-label text-white small">Collapsible Paragraph 1</label>
                             <textarea class="form-control" name="about_collapsible_p1" rows="3" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label text-muted small">Collapsible Paragraph 2</label>
+                            <label class="form-label text-white small">Collapsible Paragraph 2</label>
                             <textarea class="form-control" name="about_collapsible_p2" rows="3" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label text-muted small">Collapsible Paragraph 3</label>
+                            <label class="form-label text-white small">Collapsible Paragraph 3</label>
                             <textarea class="form-control" name="about_collapsible_p3" rows="3" required></textarea>
                         </div>
                     </div>
@@ -384,21 +390,21 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Footer Brand Text</label>
+                                    <label class="form-label text-white small">Footer Brand Text</label>
                                     <textarea class="form-control" name="footer_about" rows="3" required></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Address</label>
+                                    <label class="form-label text-white small">Address</label>
                                     <textarea class="form-control" name="footer_address" rows="3" required></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Appointments Hotline</label>
+                                    <label class="form-label text-white small">Appointments Hotline</label>
                                     <input type="text" class="form-control" name="footer_phone" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Email Address</label>
+                                    <label class="form-label text-white small">Email Address</label>
                                     <input type="email" class="form-control" name="footer_email" required>
                                 </div>
                             </div>
@@ -410,21 +416,21 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Facebook URL</label>
+                                    <label class="form-label text-white small">Facebook URL</label>
                                     <input type="text" class="form-control" name="footer_facebook">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Instagram URL</label>
+                                    <label class="form-label text-white small">Instagram URL</label>
                                     <input type="text" class="form-control" name="footer_instagram">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">Twitter (X) URL</label>
+                                    <label class="form-label text-white small">Twitter (X) URL</label>
                                     <input type="text" class="form-control" name="footer_twitter">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-muted small">LinkedIn URL</label>
+                                    <label class="form-label text-white small">LinkedIn URL</label>
                                     <input type="text" class="form-control" name="footer_linkedin">
                                 </div>
                             </div>
@@ -446,17 +452,74 @@
                     <div class="card-header-premium">
                         <h4 class="mb-0 text-white">Media Library</h4>
                         <div class="d-flex align-items-center gap-3">
-                            <input type="file" id="library-upload-file" class="d-none" onchange="uploadToLibrary()">
+                            <input type="file" id="library-upload-file" accept="image/*,.pdf,.docx,.doc" class="d-none" onchange="uploadToLibrary()">
                             <button class="btn btn-primary btn-sm"
                                 onclick="document.getElementById('library-upload-file').click()">
-                                <i class="fa-solid fa-cloud-arrow-up me-1"></i> Upload Image
+                                <i class="fa-solid fa-cloud-arrow-up me-1"></i> Upload File (Image/PDF)
                             </button>
                         </div>
                     </div>
-                    <p class="text-secondary small mb-4">View, copy path URLs, or delete images stored in the server's
-                        uploads folder.</p>
+                    <p class="text-secondary small mb-4">View, copy path URLs, or delete uploaded files. Candidate resumes are excluded from this view.</p>
+                    
+                    <!-- Media Type Filters -->
+                    <div class="d-flex gap-2 mb-4">
+                        <button class="btn btn-sm btn-outline-primary active" id="btn-media-all" onclick="filterMedia('all')">All Files</button>
+                        <button class="btn btn-sm btn-outline-primary" id="btn-media-images" onclick="filterMedia('images')">Images</button>
+                        <button class="btn btn-sm btn-outline-primary" id="btn-media-docs" onclick="filterMedia('docs')">PDF/Documents</button>
+                    </div>
+
                     <div id="mediaGrid" class="row g-3">
                         <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: JOB POSITIONS -->
+            <div class="tab-panel d-none" id="tab-positions">
+                <div class="content-card">
+                    <div class="card-header-premium">
+                        <h4 class="mb-0 text-white">Job Positions</h4>
+                        <button class="btn btn-primary btn-sm" onclick="openAddModal('job-positions')">
+                            <i class="fa-solid fa-plus me-1"></i> Add Position
+                        </button>
+                    </div>
+                    <p class="text-secondary small mb-4">Manage the available job vacancy positions displayed in the
+                        front-end appointment modal dropdown.</p>
+                    <div id="positionsListContainer">
+                        <!-- Loaded Dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: APPLICATIONS -->
+            <div class="tab-panel d-none" id="tab-applications">
+                <div class="content-card">
+                    <div class="card-header-premium">
+                        <h4 class="mb-0 text-white">Job Applications</h4>
+                        <button class="btn btn-outline-primary btn-sm" onclick="loadApplications()">
+                            <i class="fa-solid fa-rotate me-1"></i> Refresh List
+                        </button>
+                    </div>
+                    <p class="text-secondary small mb-4">Review all candidate submissions received from the "Work With
+                        Us" portals.</p>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover align-middle border border-secondary"
+                            style="border-radius: 8px; overflow: hidden;">
+                            <thead>
+                                <tr class="text-secondary">
+                                    <th style="padding: 15px;">Candidate</th>
+                                    <th style="padding: 15px;">Contact Info</th>
+                                    <th style="padding: 15px;">Position & Experience</th>
+                                    <th style="padding: 15px;">Cover Message</th>
+                                    <th style="padding: 15px;">Resume</th>
+                                    <th style="padding: 15px;">Applied Date</th>
+                                    <th style="padding: 15px; text-align: center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applicationsListContainer">
+                                <!-- Loaded Dynamically -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -482,44 +545,42 @@
                         <div class="row g-3">
                             <!-- Title Field -->
                             <div class="col-md-12" id="div-title">
-                                <label class="form-label text-muted small">Title</label>
+                                <label class="form-label text-white small" id="lbl-title">Title</label>
                                 <input type="text" class="form-control" id="form-title" required>
                             </div>
                             <!-- Subtitle/Tag Field -->
                             <div class="col-md-6" id="div-subtitle">
-                                <label class="form-label text-muted small" id="lbl-subtitle">Subtitle</label>
+                                <label class="form-label text-white small" id="lbl-subtitle">Subtitle</label>
                                 <input type="text" class="form-control" id="form-subtitle">
                             </div>
                             <!-- Sort Order -->
                             <div class="col-md-6" id="div-sort">
-                                <label class="form-label text-muted small">Sort Order</label>
+                                <label class="form-label text-white small">Sort Order</label>
                                 <input type="number" class="form-control" id="form-sort" value="0">
                             </div>
                             <!-- Category Dropdown (for gallery/events) -->
                             <div class="col-md-6" id="div-category">
-                                <label class="form-label text-muted small">Category</label>
+                                <label class="form-label text-white small" id="lbl-category">Category</label>
                                 <select class="form-select" id="form-category">
                                     <!-- Dynamic -->
                                 </select>
                             </div>
                             <!-- Date (for events) -->
                             <div class="col-md-6" id="div-date">
-                                <label class="form-label text-muted small">Event Date (string)</label>
+                                <label class="form-label text-white small">Event Date (string)</label>
                                 <input type="text" class="form-control" id="form-date" placeholder="e.g. May 20, 2026">
                             </div>
                             <!-- Description -->
                             <div class="col-md-12" id="div-desc">
-                                <label class="form-label text-muted small">Description</label>
+                                <label class="form-label text-white small">Description</label>
                                 <textarea class="form-control" id="form-desc" rows="3"></textarea>
                             </div>
                             <!-- Image Selection -->
                             <div class="col-md-12" id="div-image">
-                                <label class="form-label text-muted small">Image Path</label>
-                                <input type="text" class="form-control" id="form-image" placeholder="/uploads/..."
-                                    required>
-                                <div class="input-group mt-2">
-                                    <input type="file" class="form-control" id="form-image-file"
-                                        onchange="uploadImage('form-image-file', 'form-image', 'modalImgPreview')">
+                                <label class="form-label text-white small">Image Path</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control text-white bg-dark border-secondary" id="form-image" placeholder="/uploads/..." required readonly>
+                                    <button class="btn btn-outline-primary" type="button" onclick="openMediaSelectOverlay()">Choose from Media Library</button>
                                 </div>
                                 <div class="image-preview-box mt-3">
                                     <img id="modalImgPreview" src="" alt="Modal Image Preview">
@@ -534,6 +595,19 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Media Select Overlay -->
+    <div id="mediaSelectOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 1100; overflow-y: auto; padding: 40px 15px;">
+        <div class="container bg-dark border border-secondary rounded p-4 text-white" style="max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 text-white"><i class="fa-solid fa-photo-film me-2"></i> Select Image from Media Library</h5>
+                <button type="button" class="btn-close btn-close-white" onclick="closeMediaSelectOverlay()"></button>
+            </div>
+            <div id="mediaSelectGrid" class="row g-3" style="max-height: 60vh; overflow-y: auto; padding-right: 5px;">
+                <!-- Dynamic cards loaded via JS -->
             </div>
         </div>
     </div>
@@ -737,68 +811,104 @@
                 'tab-events': 'Events & Health Camps',
                 'tab-attractions': 'Nearby Attractions & Travel Modes',
                 'tab-footer': 'Footer & Contact Information',
-                'tab-media': 'Media Library Uploads'
+                'tab-media': 'Media Library Uploads',
+                'tab-positions': 'Manage Available Job Vacancies',
+                'tab-applications': 'Candidate Job Applications'
             };
             document.getElementById('tabTitle').textContent = titleMap[tabId] || 'Dashboard';
 
             if (tabId === 'tab-media') {
                 loadMediaLibrary();
+            } else if (tabId === 'tab-applications') {
+                loadApplications();
             }
         }
+
+        let localMediaFiles = [];
 
         // Media Library API interactions
         async function loadMediaLibrary() {
             const grid = document.getElementById('mediaGrid');
-            grid.innerHTML = '<div class="col-12 text-center text-muted py-5"><i class="fa-solid fa-spinner fa-spin fa-2x mb-3"></i><p>Loading media files...</p></div>';
+            grid.innerHTML = '<div class="col-12 text-center text-white py-5"><i class="fa-solid fa-spinner fa-spin fa-2x mb-3"></i><p>Loading media files...</p></div>';
 
             try {
                 const res = await fetch('/api/admin/uploads', {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 if (!res.ok) throw new Error('Failed to load uploads');
-                const files = await res.json();
-
-                if (files.length === 0) {
-                    grid.innerHTML = '<div class="col-12 text-center text-muted py-5"><i class="fa-solid fa-images fa-3x mb-3"></i><p>No media files uploaded yet.</p></div>';
-                    return;
-                }
-
-                grid.innerHTML = files.map(file => {
-                    const isImg = /\.(jpeg|jpg|png|webp|svg)$/i.test(file.filename);
-                    const sizeKB = (file.size / 1024).toFixed(1);
-                    const displayDate = new Date(file.createdAt).toLocaleDateString();
-
-                    return `
-                        <div class="col-6 col-md-4 col-lg-3">
-                            <div class="card bg-dark border-secondary h-100 position-relative overflow-hidden group">
-                                <div class="ratio ratio-4x3 bg-black d-flex align-items-center justify-content-center">
-                                    ${isImg ?
-                            `<img src="${file.url}" class="card-img-top object-fit-cover" alt="${file.filename}">` :
-                            `<div class="text-center text-primary"><i class="fa-solid fa-file-lines fa-3x"></i></div>`
-                        }
-                                </div>
-                                <div class="card-body p-3">
-                                    <h6 class="text-white text-truncate mb-1" title="${file.filename}">${file.filename}</h6>
-                                    <div class="d-flex justify-content-between align-items-center text-muted small">
-                                        <span>${sizeKB} KB</span>
-                                        <span>${displayDate}</span>
-                                    </div>
-                                    <div class="d-flex gap-2 mt-3">
-                                        <button class="btn btn-sm btn-outline-primary flex-grow-1" onclick="copyToClipboard('${file.url}')">
-                                            <i class="fa-regular fa-copy me-1"></i> Copy URL
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-danger" onclick="deleteFromLibrary('${file.filename}')" title="Delete">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+                localMediaFiles = await res.json();
+                renderMedia('all');
             } catch (err) {
                 grid.innerHTML = `<div class="col-12 text-center text-danger py-5"><i class="fa-solid fa-triangle-exclamation fa-3x mb-3"></i><p>${err.message || 'Error loading media.'}</p></div>`;
             }
+        }
+
+        function filterMedia(type) {
+            // Update active state of buttons
+            document.querySelectorAll('[id^="btn-media-"]').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-media-${type}`).classList.add('active');
+            renderMedia(type);
+        }
+
+        function renderMedia(filterType) {
+            const grid = document.getElementById('mediaGrid');
+            if (localMediaFiles.length === 0) {
+                grid.innerHTML = '<div class="col-12 text-center text-white py-5"><i class="fa-solid fa-images fa-3x mb-3"></i><p>No media files uploaded yet.</p></div>';
+                return;
+            }
+
+            const filtered = localMediaFiles.filter(file => {
+                const isImg = /\.(jpeg|jpg|png|webp|svg)$/i.test(file.filename);
+                if (filterType === 'images') return isImg;
+                if (filterType === 'docs') return !isImg;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-12 text-center text-white py-5"><i class="fa-solid fa-images fa-3x mb-3"></i><p>No files match this filter.</p></div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(file => {
+                const isImg = /\.(jpeg|jpg|png|webp|svg)$/i.test(file.filename);
+                const isPdf = /\.pdf$/i.test(file.filename);
+                const sizeKB = (file.size / 1024).toFixed(1);
+                const displayDate = new Date(file.createdAt).toLocaleDateString();
+
+                let iconHtml = '';
+                if (isImg) {
+                    iconHtml = `<img src="${file.url}" class="card-img-top object-fit-cover" alt="${file.filename}">`;
+                } else if (isPdf) {
+                    iconHtml = `<div class="text-center text-danger"><i class="fa-solid fa-file-pdf fa-3x"></i></div>`;
+                } else {
+                    iconHtml = `<div class="text-center text-primary"><i class="fa-solid fa-file-lines fa-3x"></i></div>`;
+                }
+
+                return `
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card bg-dark border-secondary h-100 position-relative overflow-hidden group">
+                            <div class="ratio ratio-4x3 bg-black d-flex align-items-center justify-content-center">
+                                ${iconHtml}
+                            </div>
+                            <div class="card-body p-3">
+                                <h6 class="text-white text-truncate mb-1" title="${file.filename}">${file.filename}</h6>
+                                <div class="d-flex justify-content-between align-items-center text-white small">
+                                    <span>${sizeKB} KB</span>
+                                    <span>${displayDate}</span>
+                                </div>
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-sm btn-outline-primary flex-grow-1" onclick="copyToClipboard('${file.url}')">
+                                        <i class="fa-regular fa-copy me-1"></i> Copy URL
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger" onclick="deleteFromLibrary('${file.filename}')" title="Delete">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         async function uploadToLibrary() {
@@ -808,7 +918,7 @@
             const formData = new FormData();
             formData.append('file', fileInput.files[0]);
 
-            showToast('Uploading image...');
+            showToast('Uploading file...');
 
             try {
                 const res = await fetch('/api/admin/upload', {
@@ -935,7 +1045,7 @@
                         <img class="list-item-img" src="${h.image_url}" alt="slide">
                         <div class="list-item-details">
                             <h5 class="text-white">${h.title}</h5>
-                            <p class="text-muted">${h.subtitle || ''}</p>
+                            <p class="text-white">${h.subtitle || ''}</p>
                         </div>
                     </div>
                     <div class="list-item-actions">
@@ -953,7 +1063,7 @@
                         <img class="list-item-img" src="${f.image_url}" alt="facility">
                         <div class="list-item-details">
                             <h5 class="text-white">${f.title}</h5>
-                            <p class="text-muted">${f.description}</p>
+                            <p class="text-white">${f.description}</p>
                         </div>
                     </div>
                     <div class="list-item-actions">
@@ -971,7 +1081,7 @@
                         <img class="list-item-img" src="${s.image_url}" alt="specialty">
                         <div class="list-item-details">
                             <h5 class="text-white">${s.title}</h5>
-                            <p class="text-muted">${s.description}</p>
+                            <p class="text-white">${s.description}</p>
                         </div>
                     </div>
                     <div class="list-item-actions">
@@ -989,7 +1099,7 @@
                         <img class="list-item-img" src="${g.image_url}" alt="photo">
                         <div class="list-item-details">
                             <h5 class="text-white">${g.title}</h5>
-                            <p class="text-muted">Category: <span class="badge bg-secondary">${g.category}</span></p>
+                            <p class="text-white">Category: <span class="badge bg-secondary">${g.category}</span></p>
                         </div>
                     </div>
                     <div class="list-item-actions">
@@ -1007,7 +1117,7 @@
                         <img class="list-item-img" src="${e.image_url}" alt="event">
                         <div class="list-item-details">
                             <h5 class="text-white">${e.title}</h5>
-                            <p class="text-muted">${e.event_date} • ${e.category}</p>
+                            <p class="text-white">${e.event_date} • ${e.category}</p>
                         </div>
                     </div>
                     <div class="list-item-actions">
@@ -1025,7 +1135,7 @@
                         <img class="list-item-img" src="${a.image_url}" alt="attr">
                         <div class="list-item-details">
                             <h5 class="text-white">${a.title}</h5>
-                            <p class="text-muted">${a.tag} • ${a.distance}</p>
+                            <p class="text-white">${a.tag} • ${a.distance}</p>
                         </div>
                     </div>
                     <div class="list-item-actions">
@@ -1042,7 +1152,7 @@
                     <div class="list-item-info">
                         <div class="list-item-details">
                             <h5 class="text-white">${r.title} (${r.mode})</h5>
-                            <p class="text-muted">${r.subtitle} • ${r.badge_info}</p>
+                            <p class="text-white">${r.subtitle} • ${r.badge_info}</p>
                         </div>
                     </div>
                     <div class="list-item-actions">
@@ -1050,6 +1160,25 @@
                     </div>
                 </div>
             `).join('');
+
+            // 8. Job Positions
+            const posContainer = document.getElementById('positionsListContainer');
+            if (posContainer && homepageData.jobPositions) {
+                posContainer.innerHTML = homepageData.jobPositions.map(p => `
+                    <div class="list-item-card">
+                        <div class="list-item-info">
+                            <div class="list-item-details">
+                                <h5 class="text-white">${p.title}</h5>
+                                <p class="text-white">Status: <span class="badge ${p.is_active ? 'bg-success' : 'bg-danger'}">${p.is_active ? 'Active' : 'Inactive'}</span> • Sort Order: ${p.sort_order}</p>
+                            </div>
+                        </div>
+                        <div class="list-item-actions">
+                            <button class="btn btn-sm btn-outline-info" onclick="openEditModal('job-positions', ${p.id})"><i class="fa-solid fa-pen"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteItem('job-positions', ${p.id})"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `).join('');
+            }
         }
 
         // Save Forms
@@ -1114,6 +1243,57 @@
             return modalInstance;
         }
 
+        async function openMediaSelectOverlay() {
+            const overlay = document.getElementById('mediaSelectOverlay');
+            const grid = document.getElementById('mediaSelectGrid');
+            grid.innerHTML = '<div class="col-12 text-center text-white py-5"><i class="fa-solid fa-spinner fa-spin fa-2x mb-3"></i><p>Loading media library images...</p></div>';
+            overlay.style.display = 'block';
+
+            try {
+                const res = await fetch('/api/admin/uploads', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!res.ok) throw new Error('Failed to load media files');
+                const files = await res.json();
+                const images = files.filter(file => /\.(jpeg|jpg|png|webp|svg)$/i.test(file.filename));
+
+                if (images.length === 0) {
+                    grid.innerHTML = '<div class="col-12 text-center text-secondary py-5"><i class="fa-solid fa-images fa-3x mb-3"></i><p>No images in Media Library. Please upload them from the Media Library tab first.</p></div>';
+                    return;
+                }
+
+                grid.innerHTML = images.map(img => {
+                    return `
+                        <div class="col-6 col-sm-4 col-md-3">
+                            <div class="card bg-dark border-secondary h-100 position-relative overflow-hidden group">
+                                <div class="ratio ratio-4x3 bg-black d-flex align-items-center justify-content-center">
+                                    <img src="${img.url}" class="card-img-top object-fit-cover" alt="${img.filename}">
+                                </div>
+                                <div class="card-body p-2 text-center">
+                                    <h6 class="text-white text-truncate small mb-2" title="${img.filename}">${img.filename}</h6>
+                                    <button type="button" class="btn btn-sm btn-primary w-100" onclick="useMediaImage('${img.url}')">
+                                        Use Image
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (err) {
+                grid.innerHTML = `<div class="col-12 text-center text-danger py-5"><i class="fa-solid fa-triangle-exclamation fa-3x mb-3"></i><p>${err.message || 'Error loading media.'}</p></div>`;
+            }
+        }
+
+        function closeMediaSelectOverlay() {
+            document.getElementById('mediaSelectOverlay').style.display = 'none';
+        }
+
+        function useMediaImage(url) {
+            document.getElementById('form-image').value = url;
+            document.getElementById('modalImgPreview').src = url;
+            closeMediaSelectOverlay();
+        }
+
         function openAddModal(resourceType) {
             document.getElementById('itemForm').reset();
             document.getElementById('itemResourceType').value = resourceType;
@@ -1139,6 +1319,7 @@
             else if (resourceType === 'events') list = homepageData.events;
             else if (resourceType === 'attractions') list = homepageData.attractions;
             else if (resourceType === 'reach-modes') list = homepageData.reachModes;
+            else if (resourceType === 'job-positions') list = homepageData.jobPositions;
 
             const item = list.find(x => x.id === id);
             if (!item) return;
@@ -1166,6 +1347,8 @@
                 document.getElementById('form-subtitle').value = item.subtitle || '';
                 document.getElementById('form-category').value = item.mode || '';
                 document.getElementById('form-date').value = item.badge_info || '';
+            } else if (resourceType === 'job-positions') {
+                document.getElementById('form-category').value = item.is_active ? 'true' : 'false';
             }
 
             configureModalFields(resourceType);
@@ -1181,6 +1364,10 @@
             document.getElementById('div-desc').style.display = 'none';
             document.getElementById('div-image').style.display = 'none';
             document.getElementById('div-sort').style.display = 'block';
+
+            // Reset dynamic labels
+            document.getElementById('lbl-title').textContent = 'Title';
+            document.getElementById('lbl-category').textContent = 'Category';
 
             if (resourceType === 'heroes') {
                 document.getElementById('div-subtitle').style.display = 'block';
@@ -1235,6 +1422,15 @@
                 document.getElementById('div-date').style.display = 'block';
                 document.getElementById('form-date').placeholder = 'e.g. 12 km • 20 Mins Drive';
                 document.getElementById('div-desc').style.display = 'block';
+            } else if (resourceType === 'job-positions') {
+                document.getElementById('div-category').style.display = 'block';
+                document.getElementById('lbl-category').textContent = 'Status';
+                document.getElementById('lbl-title').textContent = 'Position Title';
+                const catSelect = document.getElementById('form-category');
+                catSelect.innerHTML = `
+                    <option value="true">Active (Show in public modal)</option>
+                    <option value="false">Inactive (Hide)</option>
+                `;
             }
         }
 
@@ -1270,6 +1466,8 @@
                 bodyData.subtitle = document.getElementById('form-subtitle').value;
                 bodyData.mode = document.getElementById('form-category').value;
                 bodyData.badge_info = document.getElementById('form-date').value;
+            } else if (resource === 'job-positions') {
+                bodyData.is_active = document.getElementById('form-category').value === 'true';
             }
 
             const method = id ? 'PUT' : 'POST';
@@ -1310,6 +1508,83 @@
                     loadData();
                 } else {
                     showToast('Failed to delete item.', true);
+                }
+            } catch (err) {
+                showToast('Server connection failed.', true);
+            }
+        }
+
+        // Applications Operations
+        async function loadApplications() {
+            const tbody = document.getElementById('applicationsListContainer');
+            if (!tbody) return;
+
+            tbody.innerHTML = '<tr><td colspan="7" class="text-center py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i> Loading applications...</td></tr>';
+
+            try {
+                const res = await fetch('/api/admin/applications', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!res.ok) throw new Error('Failed to load applications');
+                const apps = await res.json();
+
+                if (apps.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="7" class="text-center py-4 text-secondary">No job applications submitted yet.</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = apps.map(app => {
+                    const displayDate = new Date(app.created_at).toLocaleString();
+                    const resumeUrl = app.resume_url;
+
+                    return `
+                        <tr>
+                            <td style="padding: 15px;" class="fw-bold text-white">${app.full_name}</td>
+                            <td style="padding: 15px;">
+                                <div class="small text-slate-300"><i class="fa-solid fa-envelope me-1 text-primary"></i> ${app.email}</div>
+                                <div class="small text-slate-300 mt-1"><i class="fa-solid fa-phone me-1 text-success"></i> ${app.phone}</div>
+                            </td>
+                            <td style="padding: 15px;">
+                                <span class="badge bg-secondary mb-1" style="font-size: 12px;">${app.position}</span>
+                                <div class="small text-white">Experience: ${app.experience}</div>
+                            </td>
+                            <td style="padding: 15px;">
+                                <div style="max-height: 80px; overflow-y: auto; max-width: 250px; font-size: 13px;" class="text-secondary">
+                                    ${app.message ? app.message.replace(/\n/g, '<br>') : '<em>No message</em>'}
+                                </div>
+                            </td>
+                            <td style="padding: 15px;">
+                                <a href="${resumeUrl}" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                                    <i class="fa-solid fa-file-pdf me-1"></i> View CV
+                                </a>
+                            </td>
+                            <td style="padding: 15px;" class="small text-white">${displayDate}</td>
+                            <td style="padding: 15px; text-align: center;">
+                                <button class="btn btn-sm btn-outline-danger rounded-circle" style="width: 32px; height: 32px; padding: 0;" onclick="deleteApplication(${app.id})" title="Delete Application">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (err) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-danger"><i class="fa-solid fa-triangle-exclamation me-2"></i> ${err.message || 'Error loading applications.'}</td></tr>`;
+            }
+        }
+
+        async function deleteApplication(id) {
+            if (!confirm('Are you sure you want to delete this job application? This action cannot be undone.')) return;
+            try {
+                const res = await fetch(`/api/admin/applications/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.ok) {
+                    showToast('Application deleted successfully.');
+                    loadApplications();
+                } else {
+                    const data = await res.json();
+                    showToast(data.message || 'Failed to delete application.', true);
                 }
             } catch (err) {
                 showToast('Server connection failed.', true);
