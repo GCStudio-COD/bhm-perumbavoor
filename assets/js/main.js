@@ -1042,11 +1042,6 @@ function initGallerySwiper() {
                 nextEl: '.gallery-next',
                 prevEl: '.gallery-prev',
             },
-            pagination: {
-                el: '.gallery-pagination',
-                clickable: true,
-                dynamicBullets: true,
-            },
             breakpoints: {
                 576: {
                     slidesPerView: 1.8,
